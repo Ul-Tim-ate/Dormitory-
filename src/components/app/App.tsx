@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+import AuthPage from '../authPage/authPage';
+import './app.sass';
 
 function App() {
   return (
     <div className="App">
-      
+      <AuthPage/>
     </div>
   );
 }
