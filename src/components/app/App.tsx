@@ -1,13 +1,13 @@
 import React from 'react';
 import AuthPage from '../authPage/authPage';
-import Header from '../Header/header';
+// import ProfilePage from '../profilePage/profilePage';
 import './app.sass';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      {/* <AuthPage/> */}
+      {/* <ProfilePage/> */}
+      <AuthPage/>
     </div>
   );
 }

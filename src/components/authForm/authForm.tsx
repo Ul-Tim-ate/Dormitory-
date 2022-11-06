@@ -6,7 +6,7 @@ const AuthForm = () => {
     <section className="authForm">
       <h2 className="authForm__header">MyDormitary</h2>
       <p className="authForm__desc">
-        Добро пожаловать в сервис по распределению комнат в общежитии
+        Добро пожаловать в сервис распределения комнат в общежитии
       </p>
       <form action="authForm__form" method="post" className="authForm__form">
         <label htmlFor="email" className="authForm__label">
@@ -27,9 +27,6 @@ const AuthForm = () => {
           id="password"
           className="authForm__input authForm__password"
         />
-        <a href="#!" className="authForm__forgot">
-          Забыли пароль
-        </a>
         <button type="submit" className="authForm__submit authForm__button">
           Войти
         </button>
