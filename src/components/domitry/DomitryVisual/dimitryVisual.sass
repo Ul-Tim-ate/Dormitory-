@@ -1,0 +1,71 @@
+@import './variables.sass'
+.domitry-visual
+  padding-top: 30px
+  &__header
+    font-family: 'Nunito'
+    font-style: normal
+    font-weight: 400
+    font-size: 22px
+    line-height: 30px
+    margin-bottom: 30px
+  &__info
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 290px
+  &__legend
+    display: flex
+    flex-direction: column
+    &-item
+      display: flex
+      &:not(:last-child)
+        margin-bottom: 12px
+      &:nth-child(-n+3)::before
+        content: ''
+        display: block
+        width: 20px
+        height: 20px
+        margin-right: 10px
+      &:nth-child(1)::before
+        background-color: $all
+      &:nth-child(2)::before
+        background-color: $busy
+      &:nth-child(3)::before
+        background-color: $free
+  &__circles
+    position: relative
+    height: 100%
+    width: 100%
+  &__circle
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    font-family: 'Nunito'
+    font-weight: 400
+    font-size: 32px
+    line-height: 44px
+    color: #F1FAEE
+    padding-right: 30px
+    padding-bottom: 20px
+    &:nth-child(1)
+      width: 161px
+      height: 161px
+      background-color: $all
+      left: 110px
+      z-index: 3
+    &:nth-child(2)
+      width: 146px
+      height: 146px
+      background-color: $busy
+      z-index: 1
+      top: 100px
+      left: 20px
+    &:nth-child(3)
+      width: 100px
+      height: 100px
+      background-color: $free
+      z-index: 2
+      left: 170px
+      bottom: 20px

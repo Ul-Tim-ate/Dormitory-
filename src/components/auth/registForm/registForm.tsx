@@ -57,7 +57,7 @@ const RegistForm = () => {
           className="registForm__input"
         />
         <button type="submit" className="registForm__submit registForm__button">
-          Регистрация
+          Отправить
         </button>
       </form>
     </section>
