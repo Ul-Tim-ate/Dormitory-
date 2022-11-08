@@ -1,5 +1,5 @@
 import React from "react";
-import DomitryNav from "../../domitry/DormitryNav/domitryNav";
+import DomitryNav from "../../domitry/dormitryNav/domitryNav";
 import Header from "../../header/header";
 import SettlersInfo from "../settlersInfo/settlersInfo";
 

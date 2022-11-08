@@ -1,10 +1,10 @@
 import React from "react";
-import DomitryInfo from "../DomitryInfo/domitryInfo";
-import DomitryNav from "../DormitryNav/domitryNav";
+import DomitryInfo from "../domitryInfo/domitryInfo";
+import DomitryNav from "../dormitryNav/domitryNav";
 import Header from "../../header/header";
 
 import "./dormitryPage.sass";
-import DomitryVisual from "../DomitryVisual/domitryVisual";
+import DomitryVisual from "../domitryVisual/domitryVisual";
 
 const DormitryPage = () => {
   return (
