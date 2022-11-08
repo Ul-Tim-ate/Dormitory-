@@ -7,6 +7,7 @@ import "./header.sass";
 const Header = () => {
   return (
     <header className="header">
+      <div className="container">
         <div className="header-wrapper">
           <a href="#!" className="header__href">
             <img src={logo} alt="Логотип MyDormitry" className="header__logo" />
@@ -28,6 +29,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
+      </div>
     </header>
   );
 };
