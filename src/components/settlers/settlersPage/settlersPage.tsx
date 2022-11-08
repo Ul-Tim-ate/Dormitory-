@@ -1,7 +1,7 @@
 import React from "react";
 import DomitryNav from "../../domitry/dormitryNav/domitryNav";
 import Header from "../../header/header";
-import SettlersInfo from "../settlersInfo/settlersInfo";
+import SettlersContent from "../settlersContent/settlersContent";
 
 import "./settlersPage.sass";
 
@@ -14,7 +14,7 @@ const Settlers = () => {
           <DomitryNav />
         </div>
         <div className="settlersPage__table">
-          <SettlersInfo />
+          <SettlersContent />
         </div>
       </div>
     </div>
