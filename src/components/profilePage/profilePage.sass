@@ -1,0 +1,47 @@
+.profile
+  height: 100vh
+  background: url("./House.svg") no-repeat right bottom
+  background-size: 520px 300px
+  &__top
+    margin-top: 50px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 50px
+  &__header
+    font-family: 'Nunito'
+    font-weight: 400
+    font-size: 32px
+    line-height: 44px
+    color: #000000
+  &__rewrite
+    cursor: pointer
+    display: flex
+    align-items: center
+    font-family: 'Inter'
+    font-size: 16px
+    line-height: 19px
+    &::before
+      content: ''
+      display: block
+      width: 26px
+      height: 32px
+      background: url('./rewrite.svg') no-repeat center
+      margin-right: 16px
+      cursor: pointer
+  &__nav
+    &-list
+      display: flex
+    &-item
+      font-family: 'Inter'
+      font-size: 16px
+      line-height: 19px
+      display: flex
+      margin-right: 20px
+      &:not(:first-child)::before
+        content: ''
+        display: block
+        width: 10px
+        height: 20px
+        background: url('./arrow.svg') no-repeat
+        margin-right: 20px
