@@ -5,7 +5,11 @@ import loupe from "./loupe.svg";
 const SearchPanel = () => {
   return (
     <div className="search-panel">
-      <input type="text" className="search-panel__input" placeholder="Поиск..."/>
+      <input
+        type="text"
+        className="search-panel__input"
+        placeholder="Поиск..."
+      />
       <button>
         <img
           src={loupe}

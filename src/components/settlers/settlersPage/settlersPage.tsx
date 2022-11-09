@@ -7,13 +7,13 @@ import "./settlersPage.sass";
 
 const Settlers = () => {
   return (
-    <div className="settlersPage">
+    <div className="settlers-page">
       <Header />
-      <div className="settlersPage__content container">
-        <div className="settlersPage__nav">
+      <div className="settlers-page__content container">
+        <div className="settlers-page__nav">
           <DomitryNav />
         </div>
-        <div className="settlersPage__table">
+        <div className="settlers-page__table">
           <SettlersContent />
         </div>
       </div>
