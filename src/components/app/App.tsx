@@ -2,18 +2,18 @@ import React from "react";
 // import AuthPage from "../auth/authPage/authPage";
 // import DormitryPage from "../domitry/dormitryPage/dormitryPage";
 import ErrorBoundary from "../error-boundary/error-boundary";
-import NewDormitry from "../forms/new-student/newStudent";
 // import LivingsPage from "../livings/livingsPage/livingsPage";
 // import Settlers from "../settlers/settlersPage/settlersPage";
 
 // import ProfilePage from "../profilePage/profilePage";
 import "./app.sass";
+import NewDormity from "../forms/new-dormitry/newDormity";
 
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
-        <NewDormitry />
+        <NewDormity/>
         {/* <DormitryPage /> */}
         {/* <LivingsPage/> */}
         {/* <Settlers/> */}
@@ -21,6 +21,7 @@ function App() {
         {/* <AuthPage /> */}
       </div>
     </ErrorBoundary>
+
   );
 }
 
