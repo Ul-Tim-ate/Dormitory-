@@ -8,12 +8,14 @@ import ErrorBoundary from "../error-boundary/error-boundary";
 // import ProfilePage from "../profilePage/profilePage";
 import "./app.sass";
 import NewDormity from "../forms/new-dormitry/newDormity";
+import SettlersProfile from "../settlers/settlersProfile/settlersProfile";
 
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
-        <NewDormity/>
+        <SettlersProfile/>
+        {/* <NewDormity/> */}
         {/* <DormitryPage /> */}
         {/* <LivingsPage/> */}
         {/* <Settlers/> */}
@@ -21,7 +23,6 @@ function App() {
         {/* <AuthPage /> */}
       </div>
     </ErrorBoundary>
-
   );
 }
 
