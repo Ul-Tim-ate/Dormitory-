@@ -1,4 +1,6 @@
 import React from "react";
+import MyFillButton from "../../UI/fill-button/MyFillButton";
+import MyInput from "../../UI/input/MyInput";
 
 import "./registForm.sass";
 
@@ -14,51 +16,34 @@ const RegistForm = () => {
         <label htmlFor="email" className="registForm__label">
           Корпаративная почта
         </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          className="registForm__input"
-        />
+        <div className="registForm__input">
+          <MyInput name="email" id="email" />
+        </div>
         <label htmlFor="password" className="registForm__label">
           Пароль
         </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          className="registForm__input"
-        />
+        <div className="registForm__input">
+          <MyInput name="password" id="password" type="password" />
+        </div>
         <label htmlFor="passwordRetype" className="registForm__label">
           Повторите пароль
         </label>
-        <input
-          type="password"
-          name="passwordRetype"
-          id="passwordRetype"
-          className="registForm__input"
-        />
+        <div className="registForm__input">
+          <MyInput name="passwordRetype" id="passwordRetype" type="password" />
+        </div>
         <label htmlFor="userData" className="registForm__label">
           Ф.И.О
         </label>
-        <input
-          type="text"
-          name="userData"
-          id="userData"
-          className="registForm__input"
-        />
+        <div className="registForm__input">
+          <MyInput name="userData" id="userData" />
+        </div>
         <label htmlFor="phone" className="registForm__label">
           Телефон
         </label>
-        <input
-          type="tel"
-          name="phone"
-          id="phone"
-          className="registForm__input"
-        />
-        <button type="submit" className="registForm__submit registForm__button">
-          Отправить
-        </button>
+        <div className="registForm__input">
+          <MyInput name="phone" id="phone" type="tel" />
+        </div>
+        <MyFillButton>Отправить</MyFillButton>
       </form>
     </section>
   );

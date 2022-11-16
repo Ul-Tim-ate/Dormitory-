@@ -1,4 +1,7 @@
 import React from "react";
+import MyClearButton from "../../UI/clear-button/MyClearButton";
+import MyFillButton from "../../UI/fill-button/MyFillButton";
+import MyInput from "../../UI/input/MyInput";
 import "./new-dormity.sass";
 
 const NewDormity = () => {
@@ -9,42 +12,36 @@ const NewDormity = () => {
         <label htmlFor="name" className="new-dormitry__label">
           Университет
         </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          className="new-dormitry__input new-dormitry__mail"
-        />
-        <label htmlFor="email" className="new-dormitry__label">
+        <div className="new-dormitry__input">
+          <MyInput name="name" id="name" />
+        </div>
+        <label htmlFor="adress" className="new-dormitry__label">
           Адрес
         </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          className="new-dormitry__input"
-        />
-        <label htmlFor="phone" className="new-dormitry__label">
+        <div className="new-dormitry__input">
+          <MyInput name="adress" id="adress" />
+        </div>
+        <label htmlFor="floors" className="new-dormitry__label">
           Количество этажей
         </label>
-        <input
-          type="number"
-          name="phone"
-          id="phone"
-          className="new-dormitry__input"
-        />
-        <label htmlFor="univer" className="new-dormitry__label">
+        <div className="new-dormitry__input">
+          <MyInput name="floors" id="floors" type="number" />
+        </div>
+        <label htmlFor="rooms" className="new-dormitry__label">
           Количество комнат на этаже
         </label>
-        <input
-          type="number"
-          name="univer"
-          id="univer"
-          className="new-dormitry__input"
-        />
+        <div className="new-dormitry__input">
+          <MyInput name="rooms" id="rooms" type="number" />
+        </div>
+        <label htmlFor="settlers" className="new-dormitry__label">
+          Количество проживающих в комнате
+        </label>
+        <div className="new-dormitry__input">
+          <MyInput name="settlers" id="settlers" type="number" />
+        </div>
         <div className="new-dormitry__buttons">
-          <button className="new-dormitry__button">Сохранить</button>
-          <button className="new-dormitry__button">Отмена</button>
+          <MyFillButton>Сохранить</MyFillButton>
+          <MyClearButton>Отмена</MyClearButton>
         </div>
       </form>
     </section>

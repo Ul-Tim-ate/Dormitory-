@@ -2,6 +2,10 @@ import React from "react";
 
 import "./newStudent.sass";
 import buttonImg from "./form-photo.svg";
+import MyInput from "../../UI/input/MyInput";
+import MyClearButton from "../../UI/clear-button/MyClearButton";
+import MyFillButton from "../../UI/fill-button/MyFillButton";
+import MyRadioCheckbox from "../../UI/radio-checkbox/MyRadioCheckbox";
 
 const NewStudent = () => {
   return (
@@ -11,62 +15,29 @@ const NewStudent = () => {
         <label htmlFor="name" className="new-student__label">
           Ф.И.О.
         </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          className="new-student__input new-student__mail"
-        />
+        <div className="new-student__input">
+          <MyInput name="name" id="id" />
+        </div>
         <label htmlFor="email" className="new-student__label">
           Почта
         </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          className="new-student__input"
-        />
+        <div className="new-student__input">
+          <MyInput name="email" id="email" />
+        </div>
         <label htmlFor="phone" className="new-student__label">
           Телефон
         </label>
-        <input
-          type="phone"
-          name="phone"
-          id="phone"
-          className="new-student__input"
-        />
+        <div className="new-student__input">
+          <MyInput name="phone" id="phone" type="phone" />
+        </div>
         <label htmlFor="univer" className="new-student__label">
           Университет
         </label>
-        <input
-          type="text"
-          name="univer"
-          id="univer"
-          className="new-student__input"
-        />
-        <span className="new-student__flg">ФЛГ</span>
-        <div className="new-student__checkboxes">
-          <div className="new-student__checkbox">
-            <input
-              type="radio"
-              id="flg-yes"
-              name="flg"
-              className="custom-radio"
-              value="flg-yes"
-            />
-            <label htmlFor="flg-yes">Да</label>
-          </div>
-          <div className="new-student__checkbox">
-            <input
-              type="radio"
-              id="flg-no"
-              name="flg"
-              className="custom-radio"
-              value="flg-no"
-            />
-            <label htmlFor="flg-no">Нет</label>
-          </div>
+        <div className="new-student__input">
+          <MyInput name="univer" id="univer" />
         </div>
+        <span className="new-student__flg">ФЛГ</span>
+        <MyRadioCheckbox />
         <label htmlFor="photo" className="new-student__label">
           Фото
         </label>
@@ -81,8 +52,8 @@ const NewStudent = () => {
           фото
         </label>
         <div className="new-student__buttons">
-          <button className="new-student__button">Сохранить</button>
-          <button className="new-student__button">Отмена</button>
+          <MyFillButton>Сохранить</MyFillButton>
+          <MyClearButton>Отмена</MyClearButton>
         </div>
       </form>
     </section>

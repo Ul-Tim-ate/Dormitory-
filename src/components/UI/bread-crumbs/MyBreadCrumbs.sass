@@ -1,0 +1,16 @@
+.my-bread-crumbs
+  &__list
+    display: flex
+  &__item
+    font-family: 'Inter'
+    font-size: 16px
+    line-height: 19px
+    display: flex
+    margin-right: 20px
+    &:not(:first-child)::before
+      content: ''
+      display: block
+      width: 10px
+      height: 20px
+      background: url('./arrow.svg') no-repeat
+      margin-right: 20px
