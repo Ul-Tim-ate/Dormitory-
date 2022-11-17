@@ -20,8 +20,8 @@ function App() {
         {/* <NewStudent/> */}
         {/* <DormitryPage /> */}
         {/* <LivingsPage/> */}
-        <Settlers/>
-        {/* <ProfilePage /> */}
+        {/* <Settlers/> */}
+        <ProfilePage />
         {/* <AuthPage /> */}
       </div>
     </ErrorBoundary>
