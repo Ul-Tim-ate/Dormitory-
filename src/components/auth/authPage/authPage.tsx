@@ -6,8 +6,8 @@ import "./authPage.sass";
 const AuthPage = () => {
   return (
     <div className="auth-page">
-      {/* <AuthForm /> */}
-      <RegistForm/>
+      <AuthForm />
+      {/* <RegistForm/> */}
     </div>
   );
 };

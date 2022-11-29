@@ -63,7 +63,12 @@ const SettlersProfile = () => {
           </ul>
         </div>
       </div>
-      <button className="settlers-profile__btn">Подобрать комнату</button>
+      <div className="settlers-profile__btns">
+        <button className="settlers-profile__btn">Подобрать комнату</button>
+        <button className="settlers-profile__btn settlers-profile__btn-del">
+          Удалить
+        </button>
+      </div>
     </section>
   );
 };

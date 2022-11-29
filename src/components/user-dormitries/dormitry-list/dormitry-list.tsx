@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import PlusDormitry from "../../UI/plus-dormitry/plus-dormitry";
 import DormitryItem, {
   DormitryItemProps,
 } from "../dormitry-item/dormitry-item";
@@ -14,6 +15,7 @@ const DormitryList: FC<DormitryListProps> = ({ domitryItems }) => {
       {domitryItems.map((domitryItem) => {
         return <DormitryItem {...domitryItem} />;
       })}
+      <li><PlusDormitry/></li>
     </ul>
   );
 };

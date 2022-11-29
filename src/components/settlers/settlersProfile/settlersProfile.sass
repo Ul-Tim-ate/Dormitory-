@@ -54,6 +54,8 @@
   &__list-item
     &:not(:last-child)
       margin-bottom: 10px
+  &__list-img
+    margin-right: 10px
   &__btn
     display: block
     font-family: 'Inter'
@@ -63,4 +65,10 @@
     padding: 13px 20px
     background: #3356D9
     border-radius: 10px
-    margin: 0 auto
+    &:not(:last-child)
+      margin-right: 40px
+    &-del
+      background: #E63946
+  &__btns
+    display: flex
+    justify-content: center
