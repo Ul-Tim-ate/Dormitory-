@@ -14,11 +14,12 @@ import RoomItem from "../room-item/room-item";
 import RoomList from "../room-list/room-list";
 import RoomInfo from "../room-info/room-info";
 
+
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
-        <RoomInfo/>
+        {/* <RoomInfo/> */}
         {/* <RoomList/> */}
         {/* <SettlersProfile/> */}
         {/* <SettlersProfilePage/> */}
@@ -29,7 +30,7 @@ function App() {
         {/* <Settlers/> */}
         {/* <ProfilePage /> */}
         {/* <AllDomitriesPage/> */}
-        {/* <AuthPage /> */}
+        <AuthPage />
       </div>
     </ErrorBoundary>
   );
