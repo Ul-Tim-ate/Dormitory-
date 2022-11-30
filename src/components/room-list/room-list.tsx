@@ -10,6 +10,7 @@ const RoomList = () => {
       <RoomItem buzy={1} free={2} roomNumber={394} />
       <RoomItem buzy={1} free={2} roomNumber={394} />
       <RoomItem buzy={1} free={2} roomNumber={394} />
+      <RoomItem buzy={1} free={2} roomNumber={394} />
     </ul>
   );
 };

@@ -12,14 +12,14 @@ import NewStudent from "../forms/new-student/newStudent";
 import SettlersProfilePage from "../settlers-profile-page/settlers-profile-page";
 import RoomItem from "../room-item/room-item";
 import RoomList from "../room-list/room-list";
+import RoomInfo from "../room-info/room-info";
 
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
-        <RoomList/>
-        {/* <ul>
-        </ul> */}
+        <RoomInfo/>
+        {/* <RoomList/> */}
         {/* <SettlersProfile/> */}
         {/* <SettlersProfilePage/> */}
         {/* <NewDormity/> */}
