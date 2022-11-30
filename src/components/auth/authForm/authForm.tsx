@@ -5,7 +5,6 @@ import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyInput from "../../UI/input/MyInput";
 import "./authForm.sass";
 
-
 const AuthForm = () => {
   const email = useInput("", {
     isEmpty: true,
@@ -19,6 +18,8 @@ const AuthForm = () => {
     email: false,
     maxLength: 12,
   });
+  const isDisabledForm = Boolean(email.error) || Boolean(password.error)
+  
   return (
     <section className="authForm">
       <h2 className="authForm__header">MyDormitary</h2>
@@ -56,7 +57,7 @@ const AuthForm = () => {
           />
         </div>
         <div className="authForm__submit">
-          <MyFillButton>Войти</MyFillButton>
+          <MyFillButton isDisabled={isDisabledForm}>Войти</MyFillButton>
         </div>
       </form>
       <div className="authForm__registration">
