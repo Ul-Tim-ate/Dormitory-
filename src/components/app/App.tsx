@@ -10,13 +10,18 @@ import NewDormity from "../forms/new-dormitry/newDormity";
 import SettlersProfile from "../settlers/settlersProfile/settlersProfile";
 import NewStudent from "../forms/new-student/newStudent";
 import SettlersProfilePage from "../settlers-profile-page/settlers-profile-page";
+import RoomItem from "../room-item/room-item";
+import RoomList from "../room-list/room-list";
 
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
+        <RoomList/>
+        {/* <ul>
+        </ul> */}
         {/* <SettlersProfile/> */}
-        <SettlersProfilePage/>
+        {/* <SettlersProfilePage/> */}
         {/* <NewDormity/> */}
         {/* <NewStudent/> */}
         {/* <DormitryPage /> */}
