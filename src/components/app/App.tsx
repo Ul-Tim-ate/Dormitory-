@@ -13,12 +13,17 @@ import SettlersProfilePage from "../settlers-profile-page/settlers-profile-page"
 import RoomItem from "../room-item/room-item";
 import RoomList from "../room-list/room-list";
 import RoomInfo from "../room-info/room-info";
-
+import { Route, Routes } from "react-router-dom";
+import RegistPage from "../auth/regist-page/regist-page";
 
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
+        <Routes>
+          <Route path="/" element={<AuthPage />} />
+          <Route path="/auth/registration" element={<RegistPage />} />
+        </Routes>
         {/* <RoomInfo/> */}
         {/* <RoomList/> */}
         {/* <SettlersProfile/> */}
@@ -30,7 +35,6 @@ function App() {
         {/* <Settlers/> */}
         {/* <ProfilePage /> */}
         {/* <AllDomitriesPage/> */}
-        <AuthPage />
       </div>
     </ErrorBoundary>
   );

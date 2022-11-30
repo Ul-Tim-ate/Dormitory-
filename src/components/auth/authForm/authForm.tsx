@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useInput from "../../../hooks/use-input/use-input";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
@@ -18,8 +19,8 @@ const AuthForm = () => {
     email: false,
     maxLength: 12,
   });
-  const isDisabledForm = Boolean(email.error) || Boolean(password.error)
-  
+  const isDisabledForm = Boolean(email.error) || Boolean(password.error);
+
   return (
     <section className="authForm">
       <h2 className="authForm__header">MyDormitary</h2>
@@ -61,7 +62,9 @@ const AuthForm = () => {
         </div>
       </form>
       <div className="authForm__registration">
-        <MyClearButton>Регистрация</MyClearButton>
+        <Link to="/auth/registration">
+          <MyClearButton>Регистрация</MyClearButton>
+        </Link>
       </div>
     </section>
   );
