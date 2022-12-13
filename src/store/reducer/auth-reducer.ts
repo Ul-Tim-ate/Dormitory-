@@ -14,7 +14,7 @@ const authReducer = (state = initialState, { type, payload }: any) => {
         user: {
           id: payload.id,
           email: payload.email,
-          fullname: payload.fullName,
+          fullname: payload.fullname,
           phone: payload.phone,
         },
         isAuth: true,

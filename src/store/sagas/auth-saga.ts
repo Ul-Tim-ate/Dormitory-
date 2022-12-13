@@ -1,8 +1,9 @@
 import { AuthActionsTypes, LoginActionType } from "../../types/auth-actions";
-import { takeEvery, all, call } from "@redux-saga/core/effects";
+import { takeEvery, all, call, put } from "@redux-saga/core/effects";
 import AuthService from "../../services/auth-service";
 import { AuthResponse } from "../../models/response/auth-response";
 import { AxiosResponse } from "axios";
+import { authLoginSuccessAction } from "../actions/auth-actions";
 
 function* loginSaga(action: LoginActionType) {
   try {
@@ -12,6 +13,9 @@ function* loginSaga(action: LoginActionType) {
       action.payload.password
     );
     localStorage.setItem("token", response.data.jwt.access);
+    console.log(response.data);
+    
+    yield put(authLoginSuccessAction(response.data.user));
   } catch (error) {
     console.log(error);
   }
