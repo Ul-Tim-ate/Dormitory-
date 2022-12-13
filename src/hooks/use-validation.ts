@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IValidation } from "../../types/IValidation";
+import { IValidation } from "../types/IValidation";
 
 const validateEmail = (email: string) => {
   return String(email)
@@ -39,6 +39,14 @@ const useValidation = (value: string, validations: IValidation) => {
           break;
         case "email":
           if (validations.email) {
+            if (validateEmail(value) === null) {
+              setErrorText(`Не соответсвует формату почты`);
+              hasError = true;
+            }
+          }
+          break;
+        case "equal":
+          if (!validations.equal && validations.equal !== value) {
             if (validateEmail(value) === null) {
               setErrorText(`Не соответсвует формату почты`);
               hasError = true;

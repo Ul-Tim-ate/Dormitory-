@@ -1,10 +1,24 @@
 import React from "react";
+import useInput from "../../../hooks/use-input";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyInput from "../../UI/input/MyInput";
-
 import "./registForm.sass";
 
 const RegistForm = () => {
+  const email = useInput("", {
+    isEmpty: true,
+    minLength: 4,
+    email: true,
+    maxLength: 20,
+  });
+
+  const password = useInput("", {
+    isEmpty: true,
+    minLength: 8,
+    email: false,
+    maxLength: 15,
+  });
+
   return (
     <section className="registForm">
       <h2 className="registForm__header">Регистрация</h2>

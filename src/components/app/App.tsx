@@ -15,6 +15,7 @@ import RoomList from "../room-list/room-list";
 import RoomInfo from "../room-info/room-info";
 import { Route, Routes } from "react-router-dom";
 import RegistPage from "../auth/regist-page/regist-page";
+import ErrorIndicator from "../error-indicator/error-indicator";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
         <Routes>
           <Route path="/" element={<AuthPage />} />
           <Route path="/auth/registration" element={<RegistPage />} />
+          <Route path="/auth/user/:id" element={<ProfilePage />} />
+          <Route path="/auth/user/:id" element={<ProfilePage />} />
+          <Route path="/domitry/:id" element={<DormitryPage />} />
+          <Route path="*" element={<ErrorIndicator />} />
         </Routes>
         {/* <RoomInfo/> */}
         {/* <RoomList/> */}

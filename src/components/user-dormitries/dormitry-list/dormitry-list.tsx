@@ -13,9 +13,11 @@ const DormitryList: FC<DormitryListProps> = ({ domitryItems }) => {
   return (
     <ul className="dormitry-list">
       {domitryItems.map((domitryItem) => {
-        return <DormitryItem {...domitryItem} />;
+        return <DormitryItem {...domitryItem} key={domitryItem.id} />;
       })}
-      <li><PlusDormitry/></li>
+      <li>
+        <PlusDormitry />
+      </li>
     </ul>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { IValidation } from '../../types/IValidation';
-import useValidation from '../use-validation/use-validation';
+import React, { useState } from "react";
+import { IValidation } from "../types/IValidation";
+import useValidation from "./use-validation";
 
 const useInput = (initialState: string, validations: IValidation) => {
   const [value, setValue] = useState<string>(initialState);
@@ -24,4 +24,4 @@ const useInput = (initialState: string, validations: IValidation) => {
   };
 };
 
-export default useInput
+export default useInput;

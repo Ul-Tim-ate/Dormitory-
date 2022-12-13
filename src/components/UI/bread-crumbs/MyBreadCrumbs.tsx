@@ -10,7 +10,11 @@ const MyBreadCrumbs: FC<MyBreadCrumbsProps> = ({ path }) => {
     <nav className="my-bread-crumbs">
       <ul className="my-bread-crumbs__list">
         {path.map((item) => {
-          return <li className="my-bread-crumbs__item">{item}</li>;
+          return (
+            <li className="my-bread-crumbs__item" key={item + 12}>
+              {item}
+            </li>
+          );
         })}
       </ul>
     </nav>

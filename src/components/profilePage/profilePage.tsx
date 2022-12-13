@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Header from "../header/header";
 import MyBreadCrumbs from "../UI/bread-crumbs/MyBreadCrumbs";
 import MyProfileEdit from "../UI/profile-edit/MyProfileEdit";
@@ -8,7 +9,6 @@ import "./profilePage.sass";
 
 const ProfilePage = () => {
   const path = ["Главная", "Мой профиль"];
-
   return (
     <section className="profile">
       <div className="container">

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import useInput from "../../../hooks/use-input/use-input";
+import useInput from "../../../hooks/use-input";
+import { authLoginAction } from "../../../store/actions/auth-actions";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyInput from "../../UI/input/MyInput";
@@ -17,9 +19,16 @@ const AuthForm = () => {
     isEmpty: true,
     minLength: 8,
     email: false,
-    maxLength: 12,
+    maxLength: 15,
   });
   const isDisabledForm = Boolean(email.error) || Boolean(password.error);
+
+  const dispatch = useDispatch();
+
+  const login = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(authLoginAction(email.value, password.value));
+  };
 
   return (
     <section className="authForm">
@@ -27,7 +36,12 @@ const AuthForm = () => {
       <p className="authForm__desc">
         Добро пожаловать в сервис распределения комнат в общежитии
       </p>
-      <form action="authForm__form" method="post" className="authForm__form">
+      <form
+        action="authForm__form"
+        method="post"
+        className="authForm__form"
+        onSubmit={login}
+      >
         <div className="authForm__mail">
           <label htmlFor="email" className="authForm__label">
             Корпаративная почта
