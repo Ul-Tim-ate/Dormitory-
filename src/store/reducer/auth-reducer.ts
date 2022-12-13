@@ -1,9 +1,8 @@
-import { IUser } from "../../models/user";
 import { AuthActionsTypes } from "../../types/auth-actions";
+import { AuthUser } from "../../types/auth-user";
 
 const initialState = {
-  user: {} as IUser,
-  isAuth: false,
+  user: {} as AuthUser,
 };
 
 const authReducer = (state = initialState, { type, payload }: any) => {
@@ -12,12 +11,14 @@ const authReducer = (state = initialState, { type, payload }: any) => {
       return {
         ...state,
         user: {
-          id: payload.id,
-          email: payload.email,
-          fullname: payload.fullname,
-          phone: payload.phone,
+          isAuth: true,
+          authUser: {
+            id: payload.id,
+            email: payload.email,
+            fullname: payload.fullname,
+            phone: payload.phone,
+          },
         },
-        isAuth: true,
       };
 
     case AuthActionsTypes.LOGIN_FAILED:

@@ -13,8 +13,7 @@ function* loginSaga(action: LoginActionType) {
       action.payload.password
     );
     localStorage.setItem("token", response.data.jwt.access);
-    console.log(response.data);
-    
+    localStorage.setItem("refreshToken", response.data.jwt.refresh);
     yield put(authLoginSuccessAction(response.data.user));
   } catch (error) {
     console.log(error);
