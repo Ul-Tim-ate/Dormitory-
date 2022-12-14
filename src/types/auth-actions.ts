@@ -14,11 +14,16 @@ export interface AuthLogin {
 export interface AuthRegistration {
   email: string;
   password: string;
-  fullName: string;
+  fullname: string;
   phone: string;
 }
 
 export interface LoginActionType {
   type: string;
   payload: AuthLogin;
+}
+
+export interface RegistActionType {
+  type: string;
+  payload: AuthRegistration;
 }

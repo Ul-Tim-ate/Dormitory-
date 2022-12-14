@@ -15,7 +15,7 @@ const AuthForm = () => {
     isEmpty: true,
     minLength: 4,
     email: true,
-    maxLength: 20,
+    maxLength: 30,
   });
   const password = useInput("", {
     isEmpty: true,

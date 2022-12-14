@@ -45,12 +45,10 @@ const useValidation = (value: string, validations: IValidation) => {
             }
           }
           break;
-        case "equal":
-          if (!validations.equal && validations.equal !== value) {
-            if (validateEmail(value) === null) {
-              setErrorText(`Не соответсвует формату почты`);
-              hasError = true;
-            }
+        case "tel":
+          if (!value && validations.tel) {
+            setErrorText("Не соответсвует номеру");
+            hasError = true;
           }
           break;
         default:

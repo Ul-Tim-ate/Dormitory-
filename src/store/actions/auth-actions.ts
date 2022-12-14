@@ -1,5 +1,9 @@
 import { IUser } from "../../models/user";
-import { AuthActionsTypes, AuthLogin } from "../../types/auth-actions";
+import {
+  AuthActionsTypes,
+  AuthLogin,
+  AuthRegistration,
+} from "../../types/auth-actions";
 
 export const authLoginAction = (email: string, password: string) => {
   const payload: AuthLogin = { email, password };
@@ -12,4 +16,8 @@ export const authLoginSuccessAction = (user: IUser) => {
 
 export const authLogoutAction = () => {
   return { type: AuthActionsTypes.LOGOUT };
+};
+
+export const authRegistrationAction = (user: AuthRegistration) => {
+  return { type: AuthActionsTypes.REGISTRATION, payload: user };
 };

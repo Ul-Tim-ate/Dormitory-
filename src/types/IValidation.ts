@@ -3,5 +3,5 @@ export interface IValidation {
   isEmpty: boolean;
   minLength: number;
   maxLength: number;
-  equal?: string;
+  tel?: boolean;
 }

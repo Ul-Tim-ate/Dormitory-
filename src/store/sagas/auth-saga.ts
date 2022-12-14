@@ -1,4 +1,8 @@
-import { AuthActionsTypes, LoginActionType } from "../../types/auth-actions";
+import {
+  AuthActionsTypes,
+  LoginActionType,
+  RegistActionType,
+} from "../../types/auth-actions";
 import { takeEvery, all, call, put } from "@redux-saga/core/effects";
 import AuthService from "../../services/auth-service";
 import { AuthResponse } from "../../models/response/auth-response";
@@ -23,7 +27,20 @@ function* loginSaga(action: LoginActionType) {
 function* logoutSaga() {
   localStorage.setItem("token", "");
   localStorage.setItem("refreshToken", "");
-  // yield;
+}
+
+function* registSaga(action: RegistActionType) {
+  try {
+    const response: AxiosResponse<AuthResponse> = yield call(
+      AuthService.registration,
+      action.payload
+    );
+    localStorage.setItem("token", response.data.jwt.access);
+    localStorage.setItem("refreshToken", response.data.jwt.refresh);
+    yield put(authLoginSuccessAction(response.data.user));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function* watchLoginSaga() {
@@ -34,6 +51,10 @@ function* watchLogoutSaga() {
   yield takeEvery(AuthActionsTypes.LOGOUT, logoutSaga);
 }
 
+function* watchRegistSaga() {
+  yield takeEvery(AuthActionsTypes.REGISTRATION, registSaga);
+}
+
 export function* watchAuthSaga() {
-  yield all([watchLoginSaga(), watchLogoutSaga()]);
+  yield all([watchLoginSaga(), watchLogoutSaga(), watchRegistSaga()]);
 }

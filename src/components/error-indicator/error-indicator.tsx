@@ -2,6 +2,7 @@ import React from "react";
 
 import "./error-indicator.sass";
 import errorImg from "./error-img.png";
+import { Link } from "react-router-dom";
 
 const ErrorIndicator = () => {
   return (
@@ -14,9 +15,9 @@ const ErrorIndicator = () => {
       <div className="error-indicator__text">
         <h1 className="error-indicator__header">Ошибочка!!</h1>
         <span className="error-indicator__desc">Что-то пошло не так :(</span>
-        <a href="#!" className="error-indicator__link">
+        <Link to={"/"} className="error-indicator__link">
           На главную
-        </a>
+        </Link>
       </div>
     </section>
   );
