@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getUserDormitriesAction } from "../../store/actions/dormitry-actions";
 import { DormitryItemProps } from "./dormitry-item/dormitry-item";
 import DormitryList from "./dormitry-list/dormitry-list";
 import "./user-dormitries.sass";
 
 const UserDormitries = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserDormitriesAction());
+  }, []);
+
   const arr: DormitryItemProps[] = [
     {
       name: "Университет ИТМО",
