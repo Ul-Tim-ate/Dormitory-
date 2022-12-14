@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import useInput from "../../../hooks/use-input";
 import { authLoginAction } from "../../../store/actions/auth-actions";
+import Spinner from "../../spinner/spinner";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyInput from "../../UI/input/MyInput";
 import "./authForm.sass";
 
 const AuthForm = () => {
+  const [loading, setLoading] = useState(false);
   const email = useInput("", {
     isEmpty: true,
     minLength: 4,
@@ -27,11 +29,15 @@ const AuthForm = () => {
 
   const login = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     dispatch(authLoginAction(email.value, password.value));
   };
 
+  const authFormClasses = loading ? "authForm loading" : "authForm";
+
   return (
-    <section className="authForm">
+    <section className={authFormClasses}>
+      <Spinner loading={loading} />
       <h2 className="authForm__header">MyDormitary</h2>
       <p className="authForm__desc">
         Добро пожаловать в сервис распределения комнат в общежитии
