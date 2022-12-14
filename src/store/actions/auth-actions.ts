@@ -9,3 +9,7 @@ export const authLoginAction = (email: string, password: string) => {
 export const authLoginSuccessAction = (user: IUser) => {
   return { type: AuthActionsTypes.LOGIN_SUCCESS, payload: user };
 };
+
+export const authLogoutAction = () => {
+  return { type: AuthActionsTypes.LOGOUT };
+};

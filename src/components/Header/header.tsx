@@ -3,8 +3,13 @@ import logo from "./logo.svg";
 import logout from "./logout.svg";
 import user from "./user-img.jpg";
 import "./header.sass";
+import { useDispatch } from "react-redux";
+import { authLogoutAction } from "../../store/actions/auth-actions";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <header className="header">
       <div className="container">
@@ -25,6 +30,10 @@ const Header = () => {
                 src={logout}
                 alt="Выйти из аккаунта"
                 className="header__logout"
+                onClick={() => {
+                  dispatch(authLogoutAction());
+                  navigate('/')
+                }}
               />
             </li>
           </ul>

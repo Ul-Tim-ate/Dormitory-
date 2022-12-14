@@ -1,3 +1,4 @@
+import { IUser } from "../../models/user";
 import { AuthActionsTypes } from "../../types/auth-actions";
 import { AuthUser } from "../../types/auth-user";
 
@@ -20,9 +21,14 @@ const authReducer = (state = initialState, { type, payload }: any) => {
           },
         },
       };
-
-    case AuthActionsTypes.LOGIN_FAILED:
-      return state;
+    case AuthActionsTypes.LOGOUT:
+      return {
+        ...state,
+        user: {
+          isAuth: false,
+          authUser: {} as IUser,
+        },
+      };
     default:
       return state;
   }

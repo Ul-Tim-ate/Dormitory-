@@ -20,10 +20,20 @@ function* loginSaga(action: LoginActionType) {
   }
 }
 
+function* logoutSaga() {
+  localStorage.setItem("token", "");
+  localStorage.setItem("refreshToken", "");
+  // yield;
+}
+
 function* watchLoginSaga() {
   yield takeEvery(AuthActionsTypes.LOGIN, loginSaga);
 }
 
+function* watchLogoutSaga() {
+  yield takeEvery(AuthActionsTypes.LOGOUT, logoutSaga);
+}
+
 export function* watchAuthSaga() {
-  yield all([watchLoginSaga()]);
+  yield all([watchLoginSaga(), watchLogoutSaga()]);
 }
