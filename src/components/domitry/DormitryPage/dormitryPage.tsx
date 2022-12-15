@@ -21,13 +21,11 @@ const DormitryPage = () => {
   if (!currentDormitory) {
     throw new Error("Такой общаги нет");
   }
-
-  console.log(currentDormitory);
   return (
     <div className="dormitry">
       <Header />
       <section className="dormitry__content container">
-        <DomitryNav />
+        <DomitryNav id={dormitoryId} />
         <div>
           <DomitryInfo {...currentDormitory} />
           <DomitryVisual

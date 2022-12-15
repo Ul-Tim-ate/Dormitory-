@@ -10,7 +10,7 @@ const LivingsPage = () => {
       <Header />
       <div className="livings-page__content container">
         <div className="livings-page__nav">
-          <DomitryNav />
+          {/* <DomitryNav /> */}
         </div>
         <div className="livings-page__table">
           <LivingsContent/>

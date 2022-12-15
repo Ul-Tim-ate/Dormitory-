@@ -26,6 +26,7 @@ function App() {
           <Route path="/auth/registration" element={<RegistPage />} />
           <Route path="/auth/user/:id" element={<ProfilePage />} />
           <Route path="/domitry/:id" element={<DormitryPage />} />
+          <Route path="/domitry/:id/settlers" element={<Settlers />} />
           <Route path="*" element={<ErrorIndicator />} />
         </Routes>
         {/* <RoomInfo/> */}

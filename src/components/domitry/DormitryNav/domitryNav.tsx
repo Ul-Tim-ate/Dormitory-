@@ -1,16 +1,21 @@
-import React from "react";
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import "./domitryNav.sass";
 
-const DomitryNav = () => {
+interface DomitryNavProps {
+  id: number;
+}
+
+const DomitryNav: FC<DomitryNavProps> = ({ id }) => {
   return (
     <nav className="dorm-nav">
       <ul className="dorm-nav__list">
-        <li className="dorm-nav__item active">
+        <Link to={`/domitry/${id}`} className="dorm-nav__item active">
           <a href="#!">Общежитие</a>
-        </li>
-        <li className="dorm-nav__item">
+        </Link>
+        <Link to={`/domitry/${id}/settlers`} className="dorm-nav__item">
           <a href="#!">На заселение</a>
-        </li>
+        </Link>
         <li className="dorm-nav__item">
           <a href="#!">Проживающие</a>
         </li>

@@ -11,7 +11,7 @@ const SettlersProfilePage = () => {
         <Header />
         <div className="settlers-profile-page__content">
           <div className="settlers-profile-page__nav">
-            <DomitryNav />
+            {/* <DomitryNav /> */}
           </div>
           <div className="settlers-profile-page__profile">
             <SettlersProfile />
