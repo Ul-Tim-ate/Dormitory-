@@ -19,7 +19,8 @@ const SettlersTable = () => {
   if (!settlers.length) {
     dispatch(fetchSettlersAction(Number.parseInt(id)));
   }
-  return <Table />;
+
+  return <Table arr={settlers} />;
 };
 
 export default SettlersTable;

@@ -2,7 +2,7 @@ import React from "react";
 import Table from "../../table/table";
 
 const LivingsTabel = () => {
-  return <Table />;
+  return <Table arr={[]} />;
 };
 
 export default LivingsTabel;
