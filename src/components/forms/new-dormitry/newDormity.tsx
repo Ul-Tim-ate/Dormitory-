@@ -1,14 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyInput from "../../UI/input/MyInput";
 import "./new-dormity.sass";
 
-const NewDormity = () => {
+interface NewDormitryProps {
+  setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const NewDormitry: FC<NewDormitryProps> = ({ setModalActive }) => {
   return (
     <section className="new-dormitry">
       <h2 className="new-dormitry__header">Заполните данные об общежитии</h2>
-      <form action="sad" className="new-dormitry__form">
+      <form
+        className="new-dormitry__form"
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
+      >
         <label htmlFor="name" className="new-dormitry__label">
           Университет
         </label>
@@ -41,11 +47,11 @@ const NewDormity = () => {
         </div>
         <div className="new-dormitry__buttons">
           <MyFillButton>Сохранить</MyFillButton>
-          <MyClearButton>Отмена</MyClearButton>
+          <MyClearButton setModalActive={setModalActive}>Отмена</MyClearButton>
         </div>
       </form>
     </section>
   );
 };
 
-export default NewDormity;
+export default NewDormitry;

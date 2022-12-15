@@ -1,4 +1,5 @@
 export interface IDormitry {
+  id: number;
   address: string;
   floorsCount: number;
   roomsCountOnFloor: number;

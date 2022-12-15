@@ -1,51 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, FC } from "react";
 import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../hooks/use-typed-selector";
+import { IDormitry } from "../../models/dormitry";
 import { getUserDormitriesAction } from "../../store/actions/dormitry-actions";
 import { DormitryItemProps } from "./dormitry-item/dormitry-item";
 import DormitryList from "./dormitry-list/dormitry-list";
 import "./user-dormitries.sass";
 
-const UserDormitries = () => {
+interface UserDormitriesProps {
+  setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const UserDormitries: FC<UserDormitriesProps> = ({ setModalActive }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserDormitriesAction());
   }, []);
-
-  const arr: DormitryItemProps[] = [
-    {
-      name: "Университет ИТМО",
-      adress: "ул. Альпийский переулок, д. 15к2",
-      buzy: 479,
-      all: 575,
-      floors: 15,
-      id: 1,
-    },
-    {
-      name: "МФТИ",
-      adress: "ул. Альпийский переулок, д. 15к2",
-      buzy: 479,
-      all: 575,
-      floors: 15,
-      id: 2,
-    },
-    {
-      name: "МГУ",
-      adress: "ул. Альпийский переулок, д. 15к2",
-      buzy: 479,
-      all: 575,
-      floors: 15,
-      id: 3,
-    },
-    {
-      name: "Политех",
-      adress: "ул. Альпийский переулок, д. 15к2",
-      buzy: 479,
-      all: 575,
-      floors: 15,
-      id: 4,
-    },
-  ];
-
+  const { dormitories }: { dormitories: IDormitry[] } = useTypedSelector(
+    (state) => state.dormitryReducer
+  );
   return (
     <section className="user-dormitries">
       <div className="user-dormitries__top">
@@ -55,7 +28,10 @@ const UserDormitries = () => {
         </span>
       </div>
       <div className="user-dormitries__list">
-        <DormitryList domitryItems={arr} />
+        <DormitryList
+          domitryItems={dormitories}
+          setModalActive={setModalActive}
+        />
       </div>
     </section>
   );

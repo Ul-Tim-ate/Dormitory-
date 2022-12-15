@@ -14,6 +14,7 @@ function* getUserDormtiesSaga() {
     const dormitories: IDormitry[] = [];
     Array.from(response.data.dormitories).forEach((element) => {
       const newElement: IDormitry = {
+        id: element.id,
         address: element.address,
         floorsCount: element.floors_count,
         roomsCountOnFloor: element.rooms_on_floor_count,

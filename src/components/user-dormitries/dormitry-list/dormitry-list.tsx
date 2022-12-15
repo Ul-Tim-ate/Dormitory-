@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { IDormitry } from "../../../models/dormitry";
 import PlusDormitry from "../../UI/plus-dormitry/plus-dormitry";
 import DormitryItem, {
   DormitryItemProps,
@@ -6,17 +7,21 @@ import DormitryItem, {
 import "./dormitry-list.sass";
 
 interface DormitryListProps {
-  domitryItems: DormitryItemProps[];
+  domitryItems: IDormitry[];
+  setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DormitryList: FC<DormitryListProps> = ({ domitryItems }) => {
+const DormitryList: FC<DormitryListProps> = ({
+  domitryItems,
+  setModalActive,
+}) => {
   return (
     <ul className="dormitry-list">
       {domitryItems.map((domitryItem) => {
         return <DormitryItem {...domitryItem} key={domitryItem.id} />;
       })}
       <li>
-        <PlusDormitry />
+        <PlusDormitry setModalActive={setModalActive} />
       </li>
     </ul>
   );
