@@ -5,6 +5,7 @@ import { authRegistrationAction } from "../../../store/actions/auth-actions";
 import Spinner from "../../spinner/spinner";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyInput from "../../UI/input/MyInput";
+import ValidateInput from "../../validate-input/validate-input";
 import "./registForm.sass";
 
 const RegistForm = () => {
@@ -75,7 +76,7 @@ const RegistForm = () => {
           Почта
         </label>
         <div className="registForm__input">
-          <MyInput
+          <ValidateInput
             name="email"
             id="email"
             value={email.value}
@@ -89,7 +90,7 @@ const RegistForm = () => {
           Пароль
         </label>
         <div className="registForm__input">
-          <MyInput
+          <ValidateInput
             name="password"
             id="password"
             type="password"
@@ -104,7 +105,7 @@ const RegistForm = () => {
           Повторите пароль
         </label>
         <div className="registForm__input">
-          <MyInput
+          <ValidateInput
             name="passwordRetype"
             id="passwordRetype"
             type="password"
@@ -119,7 +120,7 @@ const RegistForm = () => {
           Ф.И.О
         </label>
         <div className="registForm__input">
-          <MyInput
+          <ValidateInput
             name="userData"
             id="userData"
             value={fullname.value}
@@ -133,7 +134,7 @@ const RegistForm = () => {
           Телефон
         </label>
         <div className="registForm__input">
-          <MyInput
+          <ValidateInput
             name="phone"
             id="phone"
             type="tel"

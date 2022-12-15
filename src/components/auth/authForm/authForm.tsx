@@ -7,6 +7,7 @@ import Spinner from "../../spinner/spinner";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyInput from "../../UI/input/MyInput";
+import ValidateInput from "../../validate-input/validate-input";
 import "./authForm.sass";
 
 const AuthForm = () => {
@@ -52,7 +53,7 @@ const AuthForm = () => {
           <label htmlFor="email" className="authForm__label">
             Корпаративная почта
           </label>
-          <MyInput
+          <ValidateInput
             name="email"
             id="email"
             value={email.value}
@@ -66,7 +67,7 @@ const AuthForm = () => {
           <label htmlFor="password" className="authForm__label">
             Пароль
           </label>
-          <MyInput
+          <ValidateInput
             name="password"
             id="password"
             type="password"
