@@ -3,6 +3,7 @@ import { AxiosResponse } from "axios";
 import { SettlerResponse } from "../../models/response/settlers-response";
 import SettlersService from "../../services/settler-service";
 import { SettlerActionsTypes } from "../../types/settler-action";
+import { setSettlersAction } from "../actions/settlers-actions";
 
 function* fetchDormitorySettlersSaga({
   type,
@@ -15,7 +16,7 @@ function* fetchDormitorySettlersSaga({
     SettlersService.getDormitorySettlers,
     payload
   );
-  console.log(response);
+  yield put(setSettlersAction(response.data));
 }
 
 function* watchFetchDormitorySettlersSaga() {
