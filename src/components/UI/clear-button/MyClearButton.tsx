@@ -8,13 +8,15 @@ interface MyClearButtonProps {
 
 const MyClearButton: FC<MyClearButtonProps> = ({
   children,
-  setModalActive = () => {},
+  setModalActive,
 }) => {
   return (
     <button
       className="myClearButton"
-      onClick={() => {
-        setModalActive(false);
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        if (setModalActive) {
+          setModalActive(false);
+        }
       }}
     >
       {children}

@@ -1,9 +1,11 @@
 import React, { FC } from "react";
 import "./MyRadioCheckbox.sass";
 
-interface MyRadioCheckboxProps {}
+interface MyRadioCheckboxProps {
+  change: React.Dispatch<React.SetStateAction<any>>;
+}
 
-const MyRadioCheckbox: FC<MyRadioCheckboxProps> = () => {
+const MyRadioCheckbox: FC<MyRadioCheckboxProps> = ({ change }) => {
   return (
     <div className="my-radio-checkbox__checkboxes">
       <div className="my-radio-checkbox__checkbox">
@@ -13,6 +15,9 @@ const MyRadioCheckbox: FC<MyRadioCheckboxProps> = () => {
           name="flg"
           className="my-radio-checkbox"
           value="flg-yes"
+          onClick={() => {
+            change(true);
+          }}
         />
         <label htmlFor="flg-yes">Да</label>
       </div>
@@ -23,6 +28,9 @@ const MyRadioCheckbox: FC<MyRadioCheckboxProps> = () => {
           name="flg"
           className="my-radio-checkbox"
           value="flg-no"
+          onClick={() => {
+            change(false);
+          }}
         />
         <label htmlFor="flg-no">Нет</label>
       </div>

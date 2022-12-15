@@ -1,8 +1,21 @@
-import React from "react";
+import React, { FC } from "react";
 import "./settlersAddButton.sass";
 
-const SettlersAddButton = () => {
-  return <button className="settlers-button">Добавить студента</button>;
+interface SettlersAddButtonProps {
+  setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SettlersAddButton: FC<SettlersAddButtonProps> = ({ setModalActive }) => {
+  return (
+    <button
+      className="settlers-button"
+      onClick={() => {
+        setModalActive(true);
+      }}
+    >
+      Добавить студента
+    </button>
+  );
 };
 
 export default SettlersAddButton;

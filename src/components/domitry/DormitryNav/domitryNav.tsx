@@ -11,10 +11,10 @@ const DomitryNav: FC<DomitryNavProps> = ({ id }) => {
     <nav className="dorm-nav">
       <ul className="dorm-nav__list">
         <Link to={`/domitry/${id}`} className="dorm-nav__item active">
-          <a href="#!">Общежитие</a>
+          Общежитие
         </Link>
         <Link to={`/domitry/${id}/settlers`} className="dorm-nav__item">
-          <a href="#!">На заселение</a>
+          На заселение
         </Link>
         <li className="dorm-nav__item">
           <a href="#!">Проживающие</a>
