@@ -16,25 +16,25 @@ const NewStudent = () => {
           Ф.И.О.
         </label>
         <div className="new-student__input">
-          <MyInput name="name" id="id" />
+          {/* <MyInput name="name" id="id" /> */}
         </div>
         <label htmlFor="email" className="new-student__label">
           Почта
         </label>
         <div className="new-student__input">
-          <MyInput name="email" id="email" />
+          {/* <MyInput name="email" id="email" /> */}
         </div>
         <label htmlFor="phone" className="new-student__label">
           Телефон
         </label>
         <div className="new-student__input">
-          <MyInput name="phone" id="phone" type="phone" />
+          {/* <MyInput name="phone" id="phone" type="phone" /> */}
         </div>
         <label htmlFor="univer" className="new-student__label">
           Университет
         </label>
         <div className="new-student__input">
-          <MyInput name="univer" id="univer" />
+          {/* <MyInput name="univer" id="univer" /> */}
         </div>
         <span className="new-student__flg">ФЛГ</span>
         <MyRadioCheckbox />

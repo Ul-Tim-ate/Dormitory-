@@ -12,6 +12,12 @@ const dormitryReducer = (state = initialState, { type, payload }: any) => {
         ...state,
         dormitories: payload,
       };
+    case DormitryActionsTypes.SET_ADDED_USER_DORMITRY:
+      console.log("state", state.dormitories);
+      console.log("payload", payload);
+      return {
+        dormitories: [...state.dormitories, payload],
+      };
     default:
       return state;
   }

@@ -1,14 +1,18 @@
 import { takeEvery, all, call, put } from "@redux-saga/core/effects";
 import { AxiosResponse } from "axios";
 import { IDormitry } from "../../models/dormitry";
-import { DormitryResponse } from "../../models/response/dormitry-response";
+import {
+  DormitoriesResponse,
+  Dormitory,
+  DormitoryResponse,
+} from "../../models/response/dormitry-response";
 import DormitryService from "../../services/dormitry-service";
 import { DormitryActionsTypes } from "../../types/dormity-action";
-import { setUserDormitriesAction } from "../actions/dormitry-actions";
+import { setAddedUserDormitoryAction, setUserDormitriesAction } from "../actions/dormitry-actions";
 
 function* getUserDormtiesSaga() {
   try {
-    const response: AxiosResponse<DormitryResponse> = yield call(
+    const response: AxiosResponse<DormitoriesResponse> = yield call(
       DormitryService.getUserDormitries
     );
     const dormitories: IDormitry[] = [];
@@ -30,6 +34,33 @@ function* getUserDormtiesSaga() {
   }
 }
 
+function* addUserDormitrySaga({
+  type,
+  payload,
+}: {
+  type: string;
+  payload: Dormitory;
+}) {
+  try {
+    const response: AxiosResponse<DormitoryResponse> = yield call(
+      DormitryService.addUserDormitry,
+      payload
+    );
+    const newDormitry = {
+      id: response.data.dormitory.id,
+      address: response.data.dormitory.address,
+      floorsCount: response.data.dormitory.floors_count,
+      roomsCountOnFloor: response.data.dormitory.rooms_on_floor_count,
+      roomCountPlaces: response.data.dormitory.rooms_on_floor_count,
+      universityName: response.data.dormitory.university_info,
+      busyPlaces: response.data.dormitory.busy_places,
+    };
+    yield put(setAddedUserDormitoryAction(newDormitry));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* watchGetUserDormtiesSaga() {
   yield takeEvery(
     DormitryActionsTypes.GET_USER_DORMITRIES,
@@ -37,6 +68,10 @@ function* watchGetUserDormtiesSaga() {
   );
 }
 
+function* watchAddUserDormtySaga() {
+  yield takeEvery(DormitryActionsTypes.ADD_USER_DORMITRY, addUserDormitrySaga);
+}
+
 export function* watchDormitrySaga() {
-  yield all([watchGetUserDormtiesSaga()]);
+  yield all([watchGetUserDormtiesSaga(), watchAddUserDormtySaga()]);
 }

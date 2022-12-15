@@ -1,8 +1,12 @@
-export interface DormitryResponse {
-  dormitories: Dormitry[];
+export interface DormitoriesResponse {
+  dormitories: Dormitory[];
 }
 
-interface Dormitry {
+export interface DormitoryResponse {
+  dormitory: Dormitory;
+}
+
+export interface Dormitory {
   id: number;
   address: string;
   floors_count: number;
