@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import { ISettler } from "../../../models/settler";
 import DomitryNav from "../../domitry/dormitryNav/domitryNav";
 import NewStudent from "../../forms/new-student/newStudent";
 import Header from "../../header/header";
@@ -15,10 +17,6 @@ const SettlersPage = () => {
   if (id) {
     dormitoryId = Number.parseInt(id);
   }
-  
-
-
-  
   return (
     <div className="settlers-page">
       <Header />

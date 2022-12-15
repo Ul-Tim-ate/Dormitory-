@@ -12,11 +12,11 @@ function* fetchDormitorySettlersSaga({
   type: string;
   payload: number;
 }) {
-  const response: AxiosResponse<SettlerResponse[]> = yield call(
+  const response: AxiosResponse<SettlerResponse> = yield call(
     SettlersService.getDormitorySettlers,
     payload
   );
-  yield put(setSettlersAction(response.data));
+  yield put(setSettlersAction(response.data.settlers));
 }
 
 function* watchFetchDormitorySettlersSaga() {
