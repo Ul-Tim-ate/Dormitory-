@@ -3,7 +3,6 @@ import AuthPage from "../auth/authPage/authPage";
 import DormitryPage from "../domitry/dormitryPage/dormitryPage";
 import ErrorBoundary from "../error-boundary/error-boundary";
 import LivingsPage from "../livings/livingsPage/livingsPage";
-import Settlers from "../settlers/settlersPage/settlersPage";
 import ProfilePage from "../profilePage/profilePage";
 import "./app.sass";
 import NewDormity from "../forms/new-dormitry/newDormity";
@@ -16,6 +15,7 @@ import RoomInfo from "../room-info/room-info";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import RegistPage from "../auth/regist-page/regist-page";
 import ErrorIndicator from "../error-indicator/error-indicator";
+import SettlersPage from "../settlers/settlersPage/settlersPage";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/auth/registration" element={<RegistPage />} />
           <Route path="/auth/user/:id" element={<ProfilePage />} />
           <Route path="/domitry/:id" element={<DormitryPage />} />
-          <Route path="/domitry/:id/settlers" element={<Settlers />} />
+          <Route path="/domitry/:id/settlers" element={<SettlersPage />} />
           <Route path="*" element={<ErrorIndicator />} />
         </Routes>
         {/* <RoomInfo/> */}

@@ -8,14 +8,17 @@ import SettlersContent from "../settlersContent/settlersContent";
 
 import "./settlersPage.sass";
 
-const Settlers = () => {
+const SettlersPage = () => {
   const [modalActive, setModalActive] = useState(false);
   let { id } = useParams();
   let dormitoryId = -1;
   if (id) {
     dormitoryId = Number.parseInt(id);
   }
+  
 
+
+  
   return (
     <div className="settlers-page">
       <Header />
@@ -34,4 +37,4 @@ const Settlers = () => {
   );
 };
 
-export default Settlers;
+export default SettlersPage;
