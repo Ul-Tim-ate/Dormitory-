@@ -16,8 +16,6 @@ export default class DormitryService {
   static async addUserDormitry(
     dormitory: Dormitory
   ): Promise<AxiosResponse<DormitoryResponse>> {
-    console.log({ ...dormitory });
-
     return $api.post<DormitoryResponse>("/dormitory", { ...dormitory });
   }
 }

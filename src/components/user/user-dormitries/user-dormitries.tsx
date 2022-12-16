@@ -4,6 +4,7 @@ import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { IDormitry } from "../../../models/dormitry";
 import { getUserDormitriesAction } from "../../../store/actions/dormitry-actions";
 import DormitryList from "../../domitry/dormitry-list/dormitry-list";
+import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
 import "./user-dormitries.sass";
 
 interface UserDormitriesProps {
@@ -15,9 +16,18 @@ const UserDormitries: FC<UserDormitriesProps> = ({ setModalActive }) => {
   useEffect(() => {
     dispatch(getUserDormitriesAction());
   }, []);
-  const { dormitories }: { dormitories: IDormitry[] } = useTypedSelector(
+  const {
+    dormitories,
+    getDormitories,
+  }: { dormitories: IDormitry[]; getDormitories: boolean } = useTypedSelector(
     (state) => state.dormitryReducer
   );
+  const displayDormitories = getDormitories ? (
+    <DormitryList domitryItems={dormitories} setModalActive={setModalActive} />
+  ) : (
+    <LoadingSpinner />
+  );
+
   return (
     <section className="user-dormitries">
       <div className="user-dormitries__top">
@@ -26,12 +36,7 @@ const UserDormitries: FC<UserDormitriesProps> = ({ setModalActive }) => {
           Управление общежитиями
         </span>
       </div>
-      <div className="user-dormitries__list">
-        <DormitryList
-          domitryItems={dormitories}
-          setModalActive={setModalActive}
-        />
-      </div>
+      <div className="user-dormitries__list">{displayDormitories}</div>
     </section>
   );
 };

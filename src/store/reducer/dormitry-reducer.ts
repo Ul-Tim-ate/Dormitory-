@@ -3,6 +3,7 @@ import { DormitryActionsTypes } from "../../types/dormity-action";
 
 const initialState = {
   dormitories: [] as IDormitry[],
+  getDormitories: false,
 };
 
 const dormitryReducer = (state = initialState, { type, payload }: any) => {
@@ -11,11 +12,11 @@ const dormitryReducer = (state = initialState, { type, payload }: any) => {
       return {
         ...state,
         dormitories: payload,
+        getDormitories: true,
       };
     case DormitryActionsTypes.SET_ADDED_USER_DORMITRY:
-      console.log("state", state.dormitories);
-      console.log("payload", payload);
       return {
+        ...state,
         dormitories: [...state.dormitories, payload],
       };
     default:
