@@ -32,7 +32,16 @@ const DormitryItem: FC<DormitryItemProps> = ({
           занято
         </span>
         <div className="dormitry-item__range">
-          <div className="dormitry-item__current"></div>
+          <div
+            className="dormitry-item__current"
+            style={{
+              width: `${
+                (busyPlaces /
+                  (floorsCount * roomsCountOnFloor * roomCountPlaces)) *
+                100
+              }%`,
+            }}
+          ></div>
         </div>
       </Link>
     </li>
