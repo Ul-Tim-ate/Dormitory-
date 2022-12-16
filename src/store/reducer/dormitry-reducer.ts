@@ -18,6 +18,12 @@ const dormitryReducer = (state = initialState, { type, payload }: any) => {
       return {
         ...state,
         dormitories: [...state.dormitories, payload],
+        getDormitories: true,
+      };
+    case DormitryActionsTypes.ADD_USER_DORMITRY:
+      return {
+        ...state,
+        getDormitories: false,
       };
     default:
       return state;
