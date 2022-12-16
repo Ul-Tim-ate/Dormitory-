@@ -10,11 +10,19 @@ const initialState = {
 const settlersReducer = (state = initialState, { type, payload }: any) => {
   switch (type) {
     case SettlerActionsTypes.SET_SETTLERS:
-      console.log("sadas", payload);
-
       return {
         ...state,
         settlers: [...payload],
+      };
+    case SettlerActionsTypes.SET_SETTLERS:
+      return {
+        ...state,
+        settlers: [...payload],
+      };
+    case SettlerActionsTypes.LOGOUT:
+      return {
+        ...state,
+        settlers: [],
       };
     default:
       return state;

@@ -25,6 +25,12 @@ const dormitryReducer = (state = initialState, { type, payload }: any) => {
         ...state,
         getDormitories: false,
       };
+    case DormitryActionsTypes.LOGOUT:
+      return {
+        dormitories: [],
+        getDormitories: false,
+      };
+
     default:
       return state;
   }
