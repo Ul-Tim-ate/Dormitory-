@@ -18,4 +18,8 @@ export default class AuthService {
       ...user,
     });
   }
+
+  static async getUser(): Promise<AxiosResponse<AuthResponse>> {
+    return $api.get<AuthResponse>("/auth/users");
+  }
 }

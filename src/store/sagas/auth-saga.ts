@@ -3,12 +3,17 @@ import {
   LoginActionType,
   RegistActionType,
 } from "../../types/auth-actions";
-import { takeEvery, all, call, put } from "@redux-saga/core/effects";
+import {
+  takeEvery,
+  all,
+  call,
+  put,
+  takeLatest,
+} from "@redux-saga/core/effects";
 import AuthService from "../../services/auth-service";
 import { AuthResponse } from "../../models/response/auth-response";
 import { AxiosResponse } from "axios";
 import { authLoginSuccessAction } from "../actions/auth-actions";
-
 
 function* loginSaga(action: LoginActionType) {
   try {
@@ -44,6 +49,21 @@ function* registSaga(action: RegistActionType) {
   }
 }
 
+function* getUserSaga() {
+  try {
+    const response: AxiosResponse<AuthResponse> = yield call(
+      AuthService.getUser
+    );
+    yield put(authLoginSuccessAction(response.data.user));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* watchGetUserSaga() {
+  yield takeLatest(AuthActionsTypes.GET_USER, getUserSaga);
+}
+
 function* watchLoginSaga() {
   yield takeEvery(AuthActionsTypes.LOGIN, loginSaga);
 }
@@ -57,5 +77,10 @@ function* watchRegistSaga() {
 }
 
 export function* watchAuthSaga() {
-  yield all([watchLoginSaga(), watchLogoutSaga(), watchRegistSaga()]);
+  yield all([
+    watchLoginSaga(),
+    watchLogoutSaga(),
+    watchRegistSaga(),
+    watchGetUserSaga(),
+  ]);
 }

@@ -21,3 +21,7 @@ export const authLogoutAction = () => {
 export const authRegistrationAction = (user: AuthRegistration) => {
   return { type: AuthActionsTypes.REGISTRATION, payload: user };
 };
+
+export const authGetUserAction = () => {
+  return { type: AuthActionsTypes.GET_USER };
+};

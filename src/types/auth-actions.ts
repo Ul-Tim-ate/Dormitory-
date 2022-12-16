@@ -4,6 +4,7 @@ export enum AuthActionsTypes {
   LOGIN_FAILED = "LOGIN_FAILED",
   LOGOUT = "LOGOUT",
   REGISTRATION = "REGISTRATION",
+  GET_USER = "GET_USER",
 }
 
 export interface AuthLogin {

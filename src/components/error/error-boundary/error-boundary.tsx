@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { ErrorsMesage } from "../../../types/errors";
+import ErrorAuth from "../error-auth/error-auth";
 import ErrorIndicator from "../error-indicator/error-indicator";
 
 interface ErrorBoundaryProps {
@@ -7,20 +9,25 @@ interface ErrorBoundaryProps {
 
 interface ErrorBoundaryState {
   hasError: boolean;
+  errorMessage: string;
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  state = { hasError: false };
+  state = { hasError: false, errorMessage: "" };
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    this.setState({ hasError: true });
+    this.setState({ hasError: true, errorMessage: error.message });
   }
 
   render() {
     if (this.state.hasError) {
-      return <ErrorIndicator />;
+      switch (this.state.errorMessage) {
+        case ErrorsMesage.NO_ACCESS:
+          return <ErrorAuth />;
+        default:
+          return <ErrorIndicator />;
+      }
     }
-
     return this.props.children;
   }
 }
