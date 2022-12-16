@@ -5,7 +5,7 @@ interface SpinnerProps {
   loading: boolean;
 }
 
-const Spinner: FC<SpinnerProps> = ({ loading }) => {
+const FormSpinner: FC<SpinnerProps> = ({ loading }) => {
   const spinnerClasses = loading ? "spinner loading" : "spinner";
   return (
     <div className={spinnerClasses}>
@@ -23,4 +23,4 @@ const Spinner: FC<SpinnerProps> = ({ loading }) => {
   );
 };
 
-export default Spinner;
+export default FormSpinner;
