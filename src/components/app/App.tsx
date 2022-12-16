@@ -1,21 +1,13 @@
-import React, { useEffect } from "react";
-import AuthPage from "../auth/authPage/authPage";
-import DormitryPage from "../domitry/dormitryPage/dormitryPage";
-import ErrorBoundary from "../error-boundary/error-boundary";
-import LivingsPage from "../livings/livingsPage/livingsPage";
-import ProfilePage from "../profilePage/profilePage";
+import React from "react";
+import AuthPage from "../auth/auth-page/auth-page";
+import DormitryPage from "../pages/dormitry-page/dormitry-page";
+import ErrorBoundary from "../error/error-boundary/error-boundary";
+import ProfilePage from "../pages/profile-page/profile-page";
 import "./app.sass";
-import NewDormity from "../forms/new-dormitry/newDormity";
-import SettlersProfile from "../settlers/settlersProfile/settlersProfile";
-import NewStudent from "../forms/new-student/newStudent";
-import SettlersProfilePage from "../settlers-profile-page/settlers-profile-page";
-import RoomItem from "../room-item/room-item";
-import RoomList from "../room-list/room-list";
-import RoomInfo from "../room-info/room-info";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import RegistPage from "../auth/regist-page/regist-page";
-import ErrorIndicator from "../error-indicator/error-indicator";
-import SettlersPage from "../settlers/settlersPage/settlersPage";
+import ErrorIndicator from "../error/error-indicator/error-indicator";
+import SettlersPage from "../pages/settlers-page/settlers-page";
 
 function App() {
   return (
@@ -29,17 +21,6 @@ function App() {
           <Route path="/domitry/:id/settlers" element={<SettlersPage />} />
           <Route path="*" element={<ErrorIndicator />} />
         </Routes>
-        {/* <RoomInfo/> */}
-        {/* <RoomList/> */}
-        {/* <SettlersProfile/> */}
-        {/* <SettlersProfilePage/> */}
-        {/* <NewDormity/> */}
-        {/* <NewStudent/> */}
-        {/* <DormitryPage /> */}
-        {/* <LivingsPage/> */}
-        {/* <Settlers/> */}
-        {/* <ProfilePage /> */}
-        {/* <AllDomitriesPage/> */}
       </div>
     </ErrorBoundary>
   );

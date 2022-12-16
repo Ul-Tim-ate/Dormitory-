@@ -1,8 +1,8 @@
 import React from "react";
 import SearchPanel from "../../UI/search-panel/search-panel";
 
-const LivingsSearchPanel = () => {
+const SettlersSearchPanel = () => {
   return <SearchPanel />;
 };
 
-export default LivingsSearchPanel;
+export default SettlersSearchPanel;

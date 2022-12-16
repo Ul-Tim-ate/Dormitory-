@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
 import "./newStudent.sass";
 import buttonImg from "./form-photo.svg";
-import MyInput from "../../UI/input/MyInput";
+import MyInput from "../../UI/my-input/my-input";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
-import MyRadioCheckbox from "../../UI/radio-checkbox/MyRadioCheckbox";
+import MyRadioCheckbox from "../../UI/radio-checkbox/my-radio-checkbox";
 
 interface NewStudentProps {
   setModalActive: React.Dispatch<React.SetStateAction<boolean>>;

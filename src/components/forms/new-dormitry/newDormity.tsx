@@ -4,7 +4,7 @@ import { Dormitory } from "../../../models/response/dormitry-response";
 import { addUserDormitoryAction } from "../../../store/actions/dormitry-actions";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
-import MyInput from "../../UI/input/MyInput";
+import MyInput from "../../UI/my-input/my-input";
 import "./new-dormity.sass";
 
 interface NewDormitryProps {

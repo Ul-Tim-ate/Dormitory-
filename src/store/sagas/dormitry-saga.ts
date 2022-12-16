@@ -1,4 +1,10 @@
-import { takeEvery, all, call, put } from "@redux-saga/core/effects";
+import {
+  takeEvery,
+  all,
+  call,
+  put,
+  takeLatest,
+} from "@redux-saga/core/effects";
 import { AxiosResponse } from "axios";
 import { IDormitry } from "../../models/dormitry";
 import {
@@ -8,7 +14,10 @@ import {
 } from "../../models/response/dormitry-response";
 import DormitryService from "../../services/dormitry-service";
 import { DormitryActionsTypes } from "../../types/dormity-action";
-import { setAddedUserDormitoryAction, setUserDormitriesAction } from "../actions/dormitry-actions";
+import {
+  setAddedUserDormitoryAction,
+  setUserDormitriesAction,
+} from "../actions/dormitry-actions";
 
 function* getUserDormtiesSaga() {
   try {
@@ -62,7 +71,7 @@ function* addUserDormitrySaga({
 }
 
 function* watchGetUserDormtiesSaga() {
-  yield takeEvery(
+  yield takeLatest(
     DormitryActionsTypes.GET_USER_DORMITRIES,
     getUserDormtiesSaga
   );

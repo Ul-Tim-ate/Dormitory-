@@ -6,10 +6,14 @@ import "./header.sass";
 import { useDispatch } from "react-redux";
 import { authLogoutAction } from "../../store/actions/auth-actions";
 import { useNavigate } from "react-router-dom";
+import { useTypedSelector } from "../../hooks/use-typed-selector";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id }: { id: number } = useTypedSelector(
+    (state) => state.authReducer.user.authUser
+  );
   return (
     <header className="header">
       <div className="container">
@@ -18,7 +22,12 @@ const Header = () => {
             <img src={logo} alt="Логотип MyDormitry" className="header__logo" />
           </a>
           <ul className="header__buttons">
-            <li className="header__button">
+            <li
+              className="header__button"
+              onClick={() => {
+                navigate(`/auth/user/${id}`);
+              }}
+            >
               <img
                 src={user}
                 alt="Фотография пользователя"
@@ -32,7 +41,7 @@ const Header = () => {
                 className="header__logout"
                 onClick={() => {
                   dispatch(authLogoutAction());
-                  navigate('/')
+                  navigate("/");
                 }}
               />
             </li>
