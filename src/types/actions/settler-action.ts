@@ -1,5 +1,6 @@
 export enum SettlerActionsTypes {
   FETCH_SETTLERS = "FETCH_SETTLERS",
   SET_SETTLERS = "SET_SETTLERS",
+  ADD_SETTLERS = "ADD_SETTLERS",
   LOGOUT = "LOGOUT",
 }

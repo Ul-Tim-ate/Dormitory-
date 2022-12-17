@@ -1,5 +1,5 @@
 import { IUser } from "../../models/user";
-import { AuthActionsTypes } from "../../types/auth-actions";
+import { AuthActionsTypes } from "../../types/actions/auth-actions";
 import { AuthUser } from "../../types/auth-user";
 
 const initialState = {

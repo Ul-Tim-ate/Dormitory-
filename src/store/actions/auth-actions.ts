@@ -3,7 +3,7 @@ import {
   AuthActionsTypes,
   AuthLogin,
   AuthRegistration,
-} from "../../types/auth-actions";
+} from "../../types/actions/auth-actions";
 
 export const authLoginAction = (email: string, password: string) => {
   const payload: AuthLogin = { email, password };
@@ -26,6 +26,6 @@ export const authGetUserAction = () => {
   return { type: AuthActionsTypes.GET_USER };
 };
 
-export const authLoginFailedAction = () => {  
+export const authLoginFailedAction = () => {
   return { type: AuthActionsTypes.LOGIN_FAILED };
 };

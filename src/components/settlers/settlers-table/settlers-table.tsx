@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
@@ -14,12 +14,19 @@ const SettlersTable = () => {
   if (!id) {
     throw new Error("нет id в url settlersTable");
   }
-  const { settlers }: { settlers: ISettler[] } = useTypedSelector(
+  const {
+    settlers,
+    getSettlers,
+  }: { settlers: ISettler[]; getSettlers: boolean } = useTypedSelector(
     (state) => state.settlersReducer
   );
 
-  if (!settlers.length) {
+  useEffect(() => {
     dispatch(fetchSettlersAction(Number.parseInt(id)));
+    
+  }, []);
+
+  if (!getSettlers) {
     return (
       <div className="settlers-table__loading">
         <LoadingSpinner />

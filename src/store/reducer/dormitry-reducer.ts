@@ -1,5 +1,5 @@
 import { IDormitry } from "../../models/dormitry";
-import { DormitryActionsTypes } from "../../types/dormity-action";
+import { DormitryActionsTypes } from "../../types/actions/dormity-action";
 
 const initialState = {
   dormitories: [] as IDormitry[],

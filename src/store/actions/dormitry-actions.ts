@@ -1,6 +1,6 @@
 import { IDormitry } from "../../models/dormitry";
 import { Dormitory } from "../../models/response/dormitry-response";
-import { DormitryActionsTypes } from "../../types/dormity-action";
+import { DormitryActionsTypes } from "../../types/actions/dormity-action";
 
 export const getUserDormitriesAction = () => {
   return { type: DormitryActionsTypes.GET_USER_DORMITRIES };

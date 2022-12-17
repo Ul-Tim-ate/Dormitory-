@@ -1,7 +1,7 @@
 import $api from "../http";
 import { AxiosResponse } from "axios";
 import { AuthResponse } from "../models/response/auth-response";
-import { AuthRegistration } from "../types/auth-actions";
+import { AuthRegistration } from "../types/actions/auth-actions";
 
 export default class AuthService {
   static async login(

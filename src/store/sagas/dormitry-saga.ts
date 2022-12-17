@@ -13,7 +13,7 @@ import {
   DormitoryResponse,
 } from "../../models/response/dormitry-response";
 import DormitryService from "../../services/dormitry-service";
-import { DormitryActionsTypes } from "../../types/dormity-action";
+import { DormitryActionsTypes } from "../../types/actions/dormity-action";
 import {
   setAddedUserDormitoryAction,
   setUserDormitriesAction,

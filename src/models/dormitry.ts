@@ -7,3 +7,6 @@ export interface IDormitry {
   universityName: string;
   busyPlaces: number;
 }
+
+
+

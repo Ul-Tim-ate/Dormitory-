@@ -5,18 +5,33 @@ import MyInput from "../../UI/my-input/my-input";
 import MyClearButton from "../../UI/clear-button/MyClearButton";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import MyRadioCheckbox from "../../UI/radio-checkbox/my-radio-checkbox";
+import { useDispatch } from "react-redux";
+import { addSettlersAction } from "../../../store/actions/settlers-actions";
 
 interface NewStudentProps {
   setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
+  dormitoryId: number;
 }
 
-const NewStudent: FC<NewStudentProps> = ({ setModalActive }) => {
+const NewStudent: FC<NewStudentProps> = ({ setModalActive, dormitoryId }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [flg, setFlg] = useState(false);
+  const dispatch = useDispatch();
   const newStudentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(
+      addSettlersAction(
+        {
+          fullname: fullName,
+          email: email,
+          phone: phone,
+          flg: flg,
+        },
+        dormitoryId
+      )
+    );
     setModalActive(false);
   };
   return (

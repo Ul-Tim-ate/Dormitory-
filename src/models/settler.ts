@@ -3,5 +3,12 @@ export interface ISettler {
   fullname: string;
   email: string;
   phone: string;
-  flg: true;
+  flg: boolean;
+}
+
+export interface NewSettler {
+  fullname: string;
+  email: string;
+  phone: string;
+  flg: boolean;
 }

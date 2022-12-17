@@ -2,7 +2,7 @@ import {
   AuthActionsTypes,
   LoginActionType,
   RegistActionType,
-} from "../../types/auth-actions";
+} from "../../types/actions/auth-actions";
 import {
   takeEvery,
   all,
