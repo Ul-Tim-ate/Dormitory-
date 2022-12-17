@@ -7,17 +7,40 @@ import DomitryVisual from "../../domitry/domitry-visual/domitry-visual";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { IDormitry } from "../../../models/dormitry";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authGetUserAction } from "../../../store/actions/auth-actions";
+import ErrorAuth from "../../error/error-auth/error-auth";
+import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
+import { getUserDormitriesAction } from "../../../store/actions/dormitry-actions";
 
 const DormitryPage = () => {
-  const { dormitories }: { dormitories: IDormitry[] } = useTypedSelector(
-    (state) => state.dormitryReducer
-  );
+  const isAuthUser = useTypedSelector((state) => state.authReducer.user.isAuth);
+  const dispatch = useDispatch();
+  const dormitryReducer = useTypedSelector((state) => state.dormitryReducer);
+  // console.log(isAuthUser);
+  // // console.log(dormitories);
   let { id } = useParams();
+
+  // if (typeof dormitryReducer.getDormitories === "undefined") {
+  //   dispatch(authGetUserAction());
+  //   dispatch(getUserDormitriesAction());
+  //   return (
+  //     <div className="app__loading">
+  //       <LoadingSpinner />
+  //     </div>
+  //   );
+  // }
+  // if (isAuthUser === false) {
+  //   return <ErrorAuth />;
+  // }
+
   let dormitoryId = -1;
   if (id) {
     dormitoryId = Number.parseInt(id);
   }
-  const currentDormitory = dormitories.find((el) => el.id == dormitoryId);
+  const currentDormitory = dormitryReducer.dormitories.find(
+    (el: IDormitry) => el.id == dormitoryId
+  );
   if (!currentDormitory) {
     throw new Error("Такой общаги нет");
   }

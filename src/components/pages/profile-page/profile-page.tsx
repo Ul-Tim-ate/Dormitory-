@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { authGetUserAction } from "../../../store/actions/auth-actions";
-import { ErrorsMesage } from "../../../types/errors";
 import ErrorAuth from "../../error/error-auth/error-auth";
 import NewDormitry from "../../forms/new-dormitry/newDormity";
 import Header from "../../header/header";
@@ -17,10 +16,10 @@ import "./profile-page.sass";
 const ProfilePage = () => {
   const [modalActive, setModalActive] = useState(false);
   const path = ["Мой профиль"];
-  const a = useTypedSelector((state) => state.authReducer.user.isAuth);
+  const isAuthUser = useTypedSelector((state) => state.authReducer.user.isAuth);
   const dispatch = useDispatch();
-  
-  if (typeof a === "undefined") {
+
+  if (typeof isAuthUser === "undefined") {
     dispatch(authGetUserAction());
     return (
       <div className="app__loading">
@@ -28,8 +27,7 @@ const ProfilePage = () => {
       </div>
     );
   }
-
-  if (a === false) {
+  if (isAuthUser === false) {
     return <ErrorAuth />;
   }
 
