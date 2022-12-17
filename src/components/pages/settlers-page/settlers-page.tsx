@@ -42,7 +42,7 @@ const SettlersPage = () => {
       <Header />
       <div className="settlers-page__content container">
         <div className="settlers-page__nav">
-          <DomitryNav id={dormitoryId} />
+          <DomitryNav dormitoryId={dormitoryId} />
         </div>
         <div className="settlers-page__table">
           <SettlersContent setModalActive={setModalActive} />

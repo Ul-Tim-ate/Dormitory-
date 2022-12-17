@@ -3,22 +3,28 @@ import { Link } from "react-router-dom";
 import "./domitry-nav.sass";
 
 interface DomitryNavProps {
-  id: number;
+  dormitoryId: number;
 }
 
-const DomitryNav: FC<DomitryNavProps> = ({ id }) => {
+const DomitryNav: FC<DomitryNavProps> = ({ dormitoryId }) => {
   return (
     <nav className="dorm-nav">
       <ul className="dorm-nav__list">
-        <Link to={`/domitry/${id}`} className="dorm-nav__item active">
+        <Link to={`/domitry/${dormitoryId}`} className="dorm-nav__item active">
           Общежитие
         </Link>
-        <Link to={`/domitry/${id}/settlers`} className="dorm-nav__item">
+        <Link
+          to={`/domitry/${dormitoryId}/settlers`}
+          className="dorm-nav__item"
+        >
           На заселение
         </Link>
-        <li className="dorm-nav__item">
-          <a href="#!">Проживающие</a>
-        </li>
+        <Link
+          className="dorm-nav__item"
+          to={`/domitry/${dormitoryId}/students`}
+        >
+          Проживающие
+        </Link>
       </ul>
     </nav>
   );

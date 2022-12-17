@@ -50,7 +50,7 @@ const DormitryPage = () => {
     <div className="dormitry">
       <Header />
       <section className="dormitry__content container">
-        <DomitryNav id={dormitoryId} />
+        <DomitryNav dormitoryId={dormitoryId} />
         <div>
           <DomitryInfo {...currentDormitory} />
           <DomitryVisual
