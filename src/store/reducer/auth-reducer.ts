@@ -4,6 +4,7 @@ import { AuthUser } from "../../types/auth-user";
 
 const initialState = {
   user: {} as AuthUser,
+  failedAuth: false,
 };
 
 const authReducer = (state = initialState, { type, payload }: any) => {
@@ -20,6 +21,7 @@ const authReducer = (state = initialState, { type, payload }: any) => {
             phone: payload.phone,
           },
         },
+        failedAuth: false,
       };
     case AuthActionsTypes.LOGOUT:
       return {
@@ -28,6 +30,12 @@ const authReducer = (state = initialState, { type, payload }: any) => {
           isAuth: false,
           authUser: {} as IUser,
         },
+        failedAuth: false,
+      };
+    case AuthActionsTypes.LOGIN_FAILED:
+      return {
+        ...state,
+        failedAuth: true,
       };
     default:
       return state;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ErrorsMesage } from "../../../types/errors";
+import { ErrorsMessage } from "../../../types/errors";
 import ErrorAuth from "../error-auth/error-auth";
 import ErrorIndicator from "../error-indicator/error-indicator";
 
@@ -22,7 +22,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   render() {
     if (this.state.hasError) {
       switch (this.state.errorMessage) {
-        case ErrorsMesage.NO_ACCESS:
+        case ErrorsMessage.NO_ACCESS:
           return <ErrorAuth />;
         default:
           return <ErrorIndicator />;

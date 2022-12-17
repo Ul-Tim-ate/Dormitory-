@@ -13,7 +13,11 @@ import {
 import AuthService from "../../services/auth-service";
 import { AuthResponse } from "../../models/response/auth-response";
 import { AxiosResponse } from "axios";
-import { authLoginSuccessAction } from "../actions/auth-actions";
+import {
+  authLoginFailedAction,
+  authLoginSuccessAction,
+} from "../actions/auth-actions";
+import { ErrorsMessage } from "../../types/errors";
 
 function* loginSaga(action: LoginActionType) {
   try {
@@ -55,8 +59,8 @@ function* getUserSaga() {
       AuthService.getUser
     );
     yield put(authLoginSuccessAction(response.data.user));
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    yield put(authLoginFailedAction());
   }
 }
 

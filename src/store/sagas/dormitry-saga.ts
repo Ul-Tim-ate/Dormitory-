@@ -39,6 +39,7 @@ function* getUserDormtiesSaga() {
     });
     yield put(setUserDormitriesAction(dormitories));
   } catch (error) {
+    console.log("error");
     console.log(error);
   }
 }

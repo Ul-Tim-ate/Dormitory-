@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthResponse } from "../models/response/auth-response";
 import { RefreshResponse } from "../models/response/refresh-response";
-import { ErrorsMesage } from "../types/errors";
+import { ErrorsMessage } from "../types/errors";
 
 export const API_URL = `https://ezhneesh.pythonanywhere.com/api`;
 
@@ -28,7 +28,8 @@ $api.interceptors.response.use(
     if (
       error.response.status == 401 &&
       error.config &&
-      !error.config._isRetry
+      !error.config._isRetry &&
+      localStorage.getItem("refreshToken")
     ) {
       originalRequest._isRetry = true;
       try {
@@ -41,10 +42,10 @@ $api.interceptors.response.use(
         localStorage.setItem("token", response.data.access);
         return $api.request(originalRequest);
       } catch (e) {
-        throw new Error(ErrorsMesage.NO_ACCESS);
+        throw new Error(ErrorsMessage.NO_ACCESS);
       }
     }
-    // throw error;
+    throw error;
   }
 );
 

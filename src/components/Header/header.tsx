@@ -7,11 +7,12 @@ import { useDispatch } from "react-redux";
 import { authLogoutAction } from "../../store/actions/auth-actions";
 import { useNavigate } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/use-typed-selector";
+import { IUser } from "../../models/user";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id }: { id: number } = useTypedSelector(
+  const authUser: IUser = useTypedSelector(
     (state) => state.authReducer.user.authUser
   );
   return (
@@ -25,7 +26,7 @@ const Header = () => {
             <li
               className="header__button"
               onClick={() => {
-                navigate(`/auth/user/${id}`);
+                navigate(`/auth/user/${authUser.id}`);
               }}
             >
               <img

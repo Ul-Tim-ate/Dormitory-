@@ -25,3 +25,7 @@ export const authRegistrationAction = (user: AuthRegistration) => {
 export const authGetUserAction = () => {
   return { type: AuthActionsTypes.GET_USER };
 };
+
+export const authLoginFailedAction = () => {  
+  return { type: AuthActionsTypes.LOGIN_FAILED };
+};

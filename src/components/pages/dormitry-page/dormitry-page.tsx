@@ -14,25 +14,27 @@ import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
 import { getUserDormitriesAction } from "../../../store/actions/dormitry-actions";
 
 const DormitryPage = () => {
-  const isAuthUser = useTypedSelector((state) => state.authReducer.user.isAuth);
+  const Auth = useTypedSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const dormitryReducer = useTypedSelector((state) => state.dormitryReducer);
-  // console.log(isAuthUser);
-  // // console.log(dormitories);
   let { id } = useParams();
+  if (Auth.failedAuth) {
+    return <ErrorAuth />;
+  }
+  if (!Auth.user.isAuth) {
+    dispatch(authGetUserAction());
+  }
+  if (!dormitryReducer.getDormitories && Auth.user.isAuth) {
+    dispatch(getUserDormitriesAction());
+  }
 
-  // if (typeof dormitryReducer.getDormitories === "undefined") {
-  //   dispatch(authGetUserAction());
-  //   dispatch(getUserDormitriesAction());
-  //   return (
-  //     <div className="app__loading">
-  //       <LoadingSpinner />
-  //     </div>
-  //   );
-  // }
-  // if (isAuthUser === false) {
-  //   return <ErrorAuth />;
-  // }
+  if (!(dormitryReducer.getDormitories && Auth.user.isAuth)) {
+    return (
+      <div className="app__loading">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   let dormitoryId = -1;
   if (id) {
