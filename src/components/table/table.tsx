@@ -17,7 +17,7 @@ const Table: FC<TableProps> = ({ arr }) => {
         </tr>
         {arr.map((el) => {
           return (
-            <tr>
+            <tr key={el.email}>
               <td className="dorm-table__cell">
                 <b>{el.fullname}</b> <br /> {el.email}
               </td>
