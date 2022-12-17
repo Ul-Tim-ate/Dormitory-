@@ -16,10 +16,13 @@ import "./profile-page.sass";
 const ProfilePage = () => {
   const [modalActive, setModalActive] = useState(false);
   const path = ["Мой профиль"];
-  const isAuthUser = useTypedSelector((state) => state.authReducer.user.isAuth);
+  const authUser = useTypedSelector((state) => state.authReducer);
   const dispatch = useDispatch();
 
-  if (typeof isAuthUser === "undefined") {
+  if (authUser.failedAuth) {
+    return <ErrorAuth />;
+  }
+  if (typeof authUser.user.isAuth === "undefined") {
     dispatch(authGetUserAction());
     return (
       <div className="app__loading">
@@ -27,7 +30,7 @@ const ProfilePage = () => {
       </div>
     );
   }
-  if (isAuthUser === false) {
+  if (!authUser.user.isAuth) {
     return <ErrorAuth />;
   }
 

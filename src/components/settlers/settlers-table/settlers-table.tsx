@@ -5,6 +5,8 @@ import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { ISettler } from "../../../models/settler";
 import { fetchSettlersAction } from "../../../store/actions/settlers-actions";
 import Table from "../../table/table";
+import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
+import "./settlers-table.sass";
 
 const SettlersTable = () => {
   const dispatch = useDispatch();
@@ -18,8 +20,12 @@ const SettlersTable = () => {
 
   if (!settlers.length) {
     dispatch(fetchSettlersAction(Number.parseInt(id)));
+    return (
+      <div className="settlers-table__loading">
+        <LoadingSpinner />
+      </div>
+    );
   }
-
   return <Table arr={settlers} />;
 };
 
