@@ -9,6 +9,7 @@ import RegistPage from "../auth/regist-page/regist-page";
 import ErrorIndicator from "../error/error-indicator/error-indicator";
 import SettlersPage from "../pages/settlers-page/settlers-page";
 import LivingsPage from "../pages/livings-page/livings-page";
+import SettlersProfilePage from "../pages/settlers-profile-page/settlers-profile-page";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
           <Route path="/domitry/:id" element={<DormitryPage />} />
           <Route path="/domitry/:id/settlers" element={<SettlersPage />} />
           <Route path="/domitry/:id/students" element={<LivingsPage />} />
+          <Route
+            path="/domitry/:id/settlers/:settlerId"
+            element={<SettlersProfilePage />}
+          />
           <Route path="*" element={<ErrorIndicator />} />
         </Routes>
       </div>

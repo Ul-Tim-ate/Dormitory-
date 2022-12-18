@@ -23,9 +23,9 @@ const SettlersTable = () => {
 
   useEffect(() => {
     dispatch(fetchSettlersAction(Number.parseInt(id)));
-    
   }, []);
 
+  const headers = ["ФИО", "Телефон", "ФЛГ"];
   if (!getSettlers) {
     return (
       <div className="settlers-table__loading">
@@ -33,7 +33,7 @@ const SettlersTable = () => {
       </div>
     );
   }
-  return <Table arr={settlers} />;
+  return <Table rows={settlers} headers={headers} />;
 };
 
 export default SettlersTable;

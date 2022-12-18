@@ -5,6 +5,7 @@ import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
 
 const LivingsTabel = () => {
   const students = useTypedSelector((state) => state.studentsReducer);
+  const headers = ["ФИО", "Телефон", "ФЛГ", "Комната"];
   if (!students.getStudents) {
     return (
       <div className="settlers-table__loading">
@@ -12,7 +13,8 @@ const LivingsTabel = () => {
       </div>
     );
   }
-  return <Table arr={students.students} />;
+
+  return <Table rows={students.students} headers={headers} />;
 };
 
 export default LivingsTabel;
