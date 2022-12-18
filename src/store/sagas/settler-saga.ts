@@ -38,7 +38,6 @@ function* addSettlerToDormitorySaga({
     payload.settler,
     payload.dormitoryId
   );
-
   yield put(fetchSettlersAction(payload.dormitoryId));
 }
 

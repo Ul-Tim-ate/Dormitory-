@@ -20,12 +20,22 @@ export default class SettlersService {
     });
   }
 
-  static async geSettlerProfile(
+  static async getSettlerProfile(
     dormitoryId: number,
     setterId: number
   ): Promise<AxiosResponse<SettlerProfileResponse>> {
     return $api.get<SettlerProfileResponse>(
       `/dormitory/${dormitoryId}/settlers/${setterId}`
     );
+  }
+
+  static deleteSetttlerProfile(dormitoryId: number, setterId: number): void {
+    try {
+      $api.delete(`/dormitory/${dormitoryId}/settlers/${setterId}`);
+    } catch (error) {
+      console.error(
+        `Error with delete settler ${setterId} from ${dormitoryId} dormitory`
+      );
+    }
   }
 }

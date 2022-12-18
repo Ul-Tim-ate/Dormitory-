@@ -12,8 +12,6 @@ export const getSettlerProfileAction = (
 };
 
 export const setSettlerProfileAction = (settler: ISettler) => {
-  console.log({ ...settler }, "sad");
-  
   return {
     type: SettlerProfileActions.SET_SETTLER,
     payload: { ...settler },
@@ -23,5 +21,15 @@ export const setSettlerProfileAction = (settler: ISettler) => {
 export const dumpSettlerProfileAction = () => {
   return {
     type: SettlerProfileActions.DUMP_SETTLER,
+  };
+};
+
+export const deleteSettlerProfileAction = (
+  dormitoryId: number,
+  settlerId: number
+) => {
+  return {
+    type: SettlerProfileActions.DELETE_SETTLER,
+    payload: { dormitoryId, settlerId },
   };
 };

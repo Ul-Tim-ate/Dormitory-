@@ -9,8 +9,10 @@ import { AxiosResponse } from "axios";
 import { SettlerProfileResponse } from "../../models/response/settler-profile-response";
 import SettlersService from "../../services/settler-service";
 import { SettlerProfileActions } from "../../types/actions/settler-profile-actions";
-import { setSettlerProfileAction } from "../actions/settler-profile-action";
-import { setSettlersAction } from "../actions/settlers-actions";
+import {
+  dumpSettlerProfileAction,
+  setSettlerProfileAction,
+} from "../actions/settler-profile-action";
 
 function* getSetttlerProfileSaga({
   type,
@@ -23,7 +25,7 @@ function* getSetttlerProfileSaga({
   };
 }) {
   const response: AxiosResponse<SettlerProfileResponse> = yield call(
-    SettlersService.geSettlerProfile,
+    SettlersService.getSettlerProfile,
     payload.dormitoryId,
     payload.settlerId
   );
@@ -31,10 +33,36 @@ function* getSetttlerProfileSaga({
   yield put(setSettlerProfileAction(response.data.settler));
 }
 
+function* deleteSetttlerProfileSaga({
+  type,
+  payload,
+}: {
+  type: string;
+  payload: {
+    dormitoryId: number;
+    settlerId: number;
+  };
+}) {
+  const response: AxiosResponse<SettlerProfileResponse> = yield call(
+    SettlersService.deleteSetttlerProfile,
+    payload.dormitoryId,
+    payload.settlerId
+  );
+
+  yield put(dumpSettlerProfileAction());
+}
+
 function* watchGetSettlerProfileSaga() {
   yield takeLatest(SettlerProfileActions.GET_SETTLER, getSetttlerProfileSaga);
 }
 
+function* watchDeleteSettlerProfileSaga() {
+  yield takeLatest(
+    SettlerProfileActions.DELETE_SETTLER,
+    deleteSetttlerProfileSaga
+  );
+}
+
 export function* watchSettlerProfileSaga() {
-  yield all([watchGetSettlerProfileSaga()]);
+  yield all([watchGetSettlerProfileSaga(), watchDeleteSettlerProfileSaga()]);
 }

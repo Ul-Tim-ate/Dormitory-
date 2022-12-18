@@ -9,11 +9,16 @@ import mark from "./mark.png";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
 import { ISettler } from "../../../models/settler";
+import { useDispatch } from "react-redux";
+import { deleteSettlerProfileAction } from "../../../store/actions/settler-profile-action";
+import { useNavigate, useParams } from "react-router-dom";
 
 const SettlersProfile = () => {
   const { settler, getSettler }: { settler: ISettler; getSettler: boolean } =
     useTypedSelector((state) => state.settlerProfileReducer);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id = "0", settlerId = "0" } = useParams();
   if (!getSettler) {
     return (
       <div className="settlers-table__loading">
@@ -70,7 +75,18 @@ const SettlersProfile = () => {
       </div>
       <div className="settlers-profile__btns">
         <button className="settlers-profile__btn">Подобрать комнату</button>
-        <button className="settlers-profile__btn settlers-profile__btn-del">
+        <button
+          className="settlers-profile__btn settlers-profile__btn-del"
+          onClick={() => {
+            dispatch(
+              deleteSettlerProfileAction(
+                Number.parseInt(id),
+                Number.parseInt(settlerId)
+              )
+            );
+            navigate(`/domitry/${id}/settlers`);
+          }}
+        >
           Удалить
         </button>
       </div>

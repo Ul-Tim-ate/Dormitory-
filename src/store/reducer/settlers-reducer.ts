@@ -32,6 +32,14 @@ const settlersReducer = (state = initialState, { type, payload }: any) => {
         settlers: [],
         getSettlers: false,
       };
+    case SettlerActionsTypes.DELETE_SETTLER:
+      const newState = state.settlers.filter((el) => {
+        return el.id !== payload.settlerId;
+      });
+      return {
+        ...state,
+        settlers: newState,
+      };
     default:
       return state;
   }
