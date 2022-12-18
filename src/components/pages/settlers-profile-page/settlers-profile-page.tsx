@@ -3,6 +3,10 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { authGetUserAction } from "../../../store/actions/auth-actions";
+import {
+  dumpSettlerProfileAction,
+  getSettlerProfileAction,
+} from "../../../store/actions/settler-profile-action";
 import { fetchStudentsAction } from "../../../store/actions/students-actions";
 import DomitryNav from "../../domitry/dormitry-nav/domitry-nav";
 import Header from "../../header/header";
@@ -11,17 +15,24 @@ import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
 import "./settlers-profile-page.sass";
 
 const SettlersProfilePage = () => {
-  const { id = "0" } = useParams();
+  const { id = "0", settlerId = "0" } = useParams();
   const dispatch = useDispatch();
   const Auth = useTypedSelector((state) => state.authReducer);
-  const settlersReducer = useTypedSelector((state) => state.settlersReducer);
+  const settlerReducer = useTypedSelector(
+    (state) => state.settlerProfileReducer
+  );
   useEffect(() => {
     if (typeof Auth.user.isAuth === "undefined") {
       dispatch(authGetUserAction());
     }
-    // if (!studentsReducer.getStudents && Auth.user.isAuth) {
-    //   dispatch(fetchStudentsAction(Number.parseInt(id)));
-    // }
+    if (!settlerReducer.getSettler && Auth.user.isAuth) {
+      dispatch(
+        getSettlerProfileAction(Number.parseInt(id), Number.parseInt(settlerId))
+      );
+      return () => {
+        dispatch(dumpSettlerProfileAction());
+      };
+    }
   }, [Auth.user.isAuth]);
 
   if (typeof Auth.user.isAuth === "undefined") {
