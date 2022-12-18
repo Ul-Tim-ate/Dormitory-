@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./settlers-profile.sass";
 import profileImg from "./settlers-img.svg";
 import studentIcon from "./student.png";
@@ -12,12 +12,14 @@ import { ISettler } from "../../../models/settler";
 import { useDispatch } from "react-redux";
 import { deleteSettlerProfileAction } from "../../../store/actions/settler-profile-action";
 import { useNavigate, useParams } from "react-router-dom";
+import RoomList from "../../room/room-list/room-list";
 
 const SettlersProfile = () => {
   const { settler, getSettler }: { settler: ISettler; getSettler: boolean } =
     useTypedSelector((state) => state.settlerProfileReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [roomList, setRoomList] = useState(false);
   const { id = "0", settlerId = "0" } = useParams();
   if (!getSettler) {
     return (
@@ -74,7 +76,14 @@ const SettlersProfile = () => {
         </div>
       </div>
       <div className="settlers-profile__btns">
-        <button className="settlers-profile__btn">Подобрать комнату</button>
+        <button
+          className="settlers-profile__btn"
+          onClick={() => {
+            setRoomList(true);
+          }}
+        >
+          Подобрать комнату
+        </button>
         <button
           className="settlers-profile__btn settlers-profile__btn-del"
           onClick={() => {
@@ -90,6 +99,13 @@ const SettlersProfile = () => {
           Удалить
         </button>
       </div>
+      {roomList ? (
+        <div className="settlers-profile__room-list">
+          <RoomList />
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };
