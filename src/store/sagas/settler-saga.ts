@@ -20,7 +20,6 @@ function* fetchDormitorySettlersSaga({
     SettlersService.getDormitorySettlers,
     payload
   );
-  console.log(response);
   yield put(setSettlersAction(response.data.settlers));
 }
 

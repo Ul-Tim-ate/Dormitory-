@@ -16,7 +16,11 @@ const Table: FC<TableProps> = ({ rows, headers }) => {
       <tbody>
         <tr className="dorm-table__header-row">
           {headers.map((el) => {
-            return <th className="dorm-table__header">{el}</th>;
+            return (
+              <th className="dorm-table__header" key={el}>
+                {el}
+              </th>
+            );
           })}
         </tr>
         {rows.map((el) => {
