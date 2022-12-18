@@ -9,6 +9,7 @@ import {
 } from "../../../store/actions/settler-profile-action";
 import { fetchStudentsAction } from "../../../store/actions/students-actions";
 import DomitryNav from "../../domitry/dormitry-nav/domitry-nav";
+import ErrorAuth from "../../error/error-auth/error-auth";
 import Header from "../../header/header";
 import SettlersProfile from "../../settlers/settlers-profile/settlers-profile";
 import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
@@ -43,9 +44,10 @@ const SettlersProfilePage = () => {
     );
   }
 
-  // if (Auth.failedAuth || (!Auth.user.isAuth && !studentsReducer.getStudents)) {
-  //   return <ErrorAuth />;
-  // }
+  if (Auth.failedAuth || (!Auth.user.isAuth && !settlerReducer.getSettler)) {
+    return <ErrorAuth />;
+  }
+
   return (
     <section className="settlers-profile-page">
       <div className="container">

@@ -27,7 +27,8 @@ function* getSetttlerProfileSaga({
     payload.dormitoryId,
     payload.settlerId
   );
-  yield put(setSettlerProfileAction(response.data));
+
+  yield put(setSettlerProfileAction(response.data.settler));
 }
 
 function* watchGetSettlerProfileSaga() {

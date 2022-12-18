@@ -12,6 +12,8 @@ export const getSettlerProfileAction = (
 };
 
 export const setSettlerProfileAction = (settler: ISettler) => {
+  console.log({ ...settler }, "sad");
+  
   return {
     type: SettlerProfileActions.SET_SETTLER,
     payload: { ...settler },

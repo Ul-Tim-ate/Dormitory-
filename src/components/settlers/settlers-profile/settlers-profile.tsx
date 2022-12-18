@@ -1,13 +1,26 @@
 import React from "react";
 import "./settlers-profile.sass";
-
 import profileImg from "./settlers-img.svg";
 import studentIcon from "./student.png";
 import mailIcon from "./mail.png";
 import phoneIcon from "./phone.png";
 import flgIcon from "./flg.png";
+import mark from "./mark.png";
+import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
+import { ISettler } from "../../../models/settler";
 
 const SettlersProfile = () => {
+  const { settler, getSettler }: { settler: ISettler; getSettler: boolean } =
+    useTypedSelector((state) => state.settlerProfileReducer);
+
+  if (!getSettler) {
+    return (
+      <div className="settlers-table__loading">
+        <LoadingSpinner />
+      </div>
+    );
+  }
   return (
     <section className="settlers-profile">
       <div className="settlers-profile__top">
@@ -26,23 +39,15 @@ const SettlersProfile = () => {
           className="settlers-profile__img"
         />
         <div className="settlers-profile__text">
-          <h2 className="settlers-profile__name">Янис Кузнецов</h2>
+          <h2 className="settlers-profile__name">{settler.fullname}</h2>
           <ul className="settlers-profile__list">
-            <li className="settlers-profile__list-item">
-              <img
-                src={studentIcon}
-                alt=""
-                className="settlers-profile__list-img"
-              />
-              Университет ИТМО, 1 курс, факультет ФИТиП
-            </li>
             <li className="settlers-profile__list-item">
               <img
                 src={mailIcon}
                 alt=""
                 className="settlers-profile__list-img"
               />
-              abobus@mail.ru
+              {settler.email}
             </li>
             <li className="settlers-profile__list-item">
               <img
@@ -50,11 +55,11 @@ const SettlersProfile = () => {
                 alt=""
                 className="settlers-profile__list-img"
               />
-              8-800-555-35-35
+              {settler.phone}
             </li>
             <li className="settlers-profile__list-item">
               <img
-                src={flgIcon}
+                src={settler.flg ? flgIcon : mark}
                 alt=""
                 className="settlers-profile__list-img"
               />

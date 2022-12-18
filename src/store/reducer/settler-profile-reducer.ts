@@ -20,7 +20,7 @@ const settlerProfileReducer = (
     case SettlerProfileActions.DUMP_SETTLER:
       return {
         ...state,
-        settler: {},
+        settler: {} as ISettler,
         getSettler: false,
       };
     default:
