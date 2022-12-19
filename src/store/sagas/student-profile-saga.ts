@@ -33,7 +33,26 @@ function* getStudentProfileSaga({
     payload.dormitoryId,
     payload.studentId
   );
+  yield put(setStudentProfileAction(response.data.student));
+}
+
+function* deleteStudentProfileSaga({
+  type,
+  payload,
+}: {
+  type: string;
+  payload: {
+    dormitoryId: number;
+    studentId: number;
+  };
+}) {
+  const response: AxiosResponse<StudentProfileResponse> = yield call(
+    StudentsService.deleteStudentProfile,
+    payload.dormitoryId,
+    payload.studentId
+  );
   console.log(response);
+
   yield put(setStudentProfileAction(response.data.student));
 }
 
@@ -41,6 +60,13 @@ function* watchGetStudentProfileSaga() {
   yield takeLatest(StudentProfileActions.GET_STUDENT, getStudentProfileSaga);
 }
 
+function* watchDeleteStudentProfileSaga() {
+  yield takeLatest(
+    StudentProfileActions.DELETE_STUDENT,
+    deleteStudentProfileSaga
+  );
+}
+
 export function* watchStudentProfileSaga() {
-  yield all([watchGetStudentProfileSaga()]);
+  yield all([watchGetStudentProfileSaga(), watchDeleteStudentProfileSaga()]);
 }

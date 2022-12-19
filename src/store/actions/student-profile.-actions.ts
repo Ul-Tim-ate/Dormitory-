@@ -23,3 +23,13 @@ export const dumpStudentProfileAction = () => {
     type: StudentProfileActions.DUMP_STUDENT,
   };
 };
+
+export const deleteStudentProfileAction = (
+  dormitoryId: number,
+  studentId: number
+) => {
+  return {
+    type: StudentProfileActions.DELETE_STUDENT,
+    payload: { dormitoryId, studentId },
+  };
+};

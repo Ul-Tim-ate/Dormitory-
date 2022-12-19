@@ -15,6 +15,7 @@ import { deleteSettlerProfileAction } from "../../../store/actions/settler-profi
 import { useNavigate, useParams } from "react-router-dom";
 import RoomList from "../../room/room-list/room-list";
 import { IStudent } from "../../../models/student";
+import { deleteStudentProfileAction } from "../../../store/actions/student-profile.-actions";
 
 const StudentProfile = () => {
   // const { settler, getSettler }: { settler: ISettler; getSettler: boolean } =
@@ -22,7 +23,6 @@ const StudentProfile = () => {
   // const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const [roomList, setRoomList] = useState(false);
-  // const { id = "0", settlerId = "0" } = useParams();
   // if (!getSettler) {
   //   return (
   //     <div className="students-table__loading">
@@ -61,8 +61,11 @@ const StudentProfile = () => {
   //   </div>
   // );
 
+  const dispatch = useDispatch();
   const { student, getStudent }: { student: IStudent; getStudent: boolean } =
     useTypedSelector((state) => state.studentProfileReducer);
+  const { id = "0", studentId = "0" } = useParams();
+  const navigate = useNavigate();
   if (!getStudent) {
     return (
       <div className="students-profile__loading">
@@ -124,7 +127,18 @@ const StudentProfile = () => {
         <button className="students-profile__btn students-profile__btn-resettle ">
           Переселить
         </button>
-        <button className="students-profile__btn students-profile__btn-remove">
+        <button
+          className="students-profile__btn students-profile__btn-remove"
+          onClick={() => {
+            dispatch(
+              deleteStudentProfileAction(
+                Number.parseInt(id),
+                Number.parseInt(studentId)
+              )
+            );
+            navigate(`/domitry/${id}/students`);
+          }}
+        >
           Выселить
         </button>
       </div>

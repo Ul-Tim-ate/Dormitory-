@@ -1,6 +1,9 @@
 import { AxiosResponse } from "axios";
 import $api from "../http";
-import { StudentsResponse } from "../models/response/students-response";
+import {
+  StudentProfileResponse,
+  StudentsResponse,
+} from "../models/response/students-response";
 
 export default class StudentsService {
   static async getDormitoryStudents(
@@ -14,6 +17,15 @@ export default class StudentsService {
     studentId: number
   ): Promise<AxiosResponse<StudentsResponse>> {
     return $api.get<StudentsResponse>(
+      `/dormitory/${dormitoryId}/students/${studentId}`
+    );
+  }
+
+  static async deleteStudentProfile(
+    dormitoryId: number,
+    studentId: number
+  ): Promise<AxiosResponse<StudentProfileResponse>> {
+    return $api.delete<StudentProfileResponse>(
       `/dormitory/${dormitoryId}/students/${studentId}`
     );
   }
