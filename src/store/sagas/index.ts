@@ -5,6 +5,7 @@ import { watchSettlerSaga } from "./settler-saga";
 import { watchStudentsSaga } from "./students-saga";
 import { watchSettlerProfileSaga } from "./settler-profile-saga";
 import { watchRoomsSaga } from "./rooms-saga";
+import { watchStudentProfileSaga } from "./student-profile-saga";
 
 export default function* rootSaga() {
   yield all([
@@ -14,5 +15,6 @@ export default function* rootSaga() {
     watchStudentsSaga(),
     watchSettlerProfileSaga(),
     watchRoomsSaga(),
+    watchStudentProfileSaga(),
   ]);
 }

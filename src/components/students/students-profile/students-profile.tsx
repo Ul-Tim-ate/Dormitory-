@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { deleteSettlerProfileAction } from "../../../store/actions/settler-profile-action";
 import { useNavigate, useParams } from "react-router-dom";
 import RoomList from "../../room/room-list/room-list";
+import { IStudent } from "../../../models/student";
 
 const StudentProfile = () => {
   // const { settler, getSettler }: { settler: ISettler; getSettler: boolean } =
@@ -59,6 +60,16 @@ const StudentProfile = () => {
   //     <RoomList />
   //   </div>
   // );
+
+  const { student, getStudent }: { student: IStudent; getStudent: boolean } =
+    useTypedSelector((state) => state.studentProfileReducer);
+  if (!getStudent) {
+    return (
+      <div className="students-table__loading">
+        <LoadingSpinner />
+      </div>
+    );
+  }
   return (
     <section className="students-profile">
       <div className="students-profile__top">
@@ -76,11 +87,11 @@ const StudentProfile = () => {
           className="students-profile__img"
         />
         <div className="students-profile__text">
-          <h2 className="students-profile__name">Янис Кусовой</h2>
+          <h2 className="students-profile__name">{student.fullname}</h2>
           <ul className="students-profile__list">
             <li className="students-profile__list-item">
               <img src={bed} alt="" className="students-profile__list-img" />
-              Комната 711
+              Комната {student.room}
             </li>
             <li className="students-profile__list-item">
               <img
@@ -88,7 +99,7 @@ const StudentProfile = () => {
                 alt=""
                 className="students-profile__list-img"
               />
-              timohator1@mail.ru
+              {student.email}
             </li>
             <li className="students-profile__list-item">
               <img
@@ -96,11 +107,11 @@ const StudentProfile = () => {
                 alt=""
                 className="students-profile__list-img"
               />
-              89011123347
+              {student.phone}
             </li>
             <li className="students-profile__list-item">
               <img
-                src={flgIcon}
+                src={student.flg ? flgIcon : mark}
                 alt=""
                 className="students-profile__list-img"
               />

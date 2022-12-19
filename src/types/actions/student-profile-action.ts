@@ -1,0 +1,6 @@
+export enum StudentProfileActions {
+  GET_STUDENT = "GET_STUDENT",
+  SET_STUDENT = "SET_STUDENT",
+  DUMP_STUDENT = "DUMP_STUDENT",
+  DELETE_STUDENT = "DELETE_STUDENT",
+}

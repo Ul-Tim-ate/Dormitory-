@@ -8,3 +8,14 @@ export interface StudentsResponse {
     room: string;
   }[];
 }
+
+export interface StudentProfileResponse {
+  student: {
+    id: number;
+    fullname: string;
+    email: string;
+    phone: string;
+    flg: true;
+    room: string;
+  };
+}

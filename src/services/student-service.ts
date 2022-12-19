@@ -8,4 +8,13 @@ export default class StudentsService {
   ): Promise<AxiosResponse<StudentsResponse>> {
     return $api.get<StudentsResponse>(`/dormitory/${id}/students`);
   }
+
+  static async getStudentProfile(
+    dormitoryId: number,
+    studentId: number
+  ): Promise<AxiosResponse<StudentsResponse>> {
+    return $api.get<StudentsResponse>(
+      `/dormitory/${dormitoryId}/students/${studentId}`
+    );
+  }
 }

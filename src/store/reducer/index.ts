@@ -4,6 +4,7 @@ import dormitryReducer from "./dormitry-reducer";
 import roomsReducer from "./rooms-reducer";
 import settlerProfileReducer from "./settler-profile-reducer";
 import settlersReducer from "./settlers-reducer";
+import studentProfileReducer from "./student-profile-reducer";
 import studentsReducer from "./students-reducer";
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   studentsReducer,
   settlerProfileReducer,
   roomsReducer,
+  studentProfileReducer,
 });
 
 export default rootReducer;

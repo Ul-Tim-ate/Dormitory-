@@ -7,6 +7,7 @@ import {
   getSettlerProfileAction,
   dumpSettlerProfileAction,
 } from "../../../store/actions/settler-profile-action";
+import { getStudentProfileAction } from "../../../store/actions/student-profile.-actions";
 import DomitryNav from "../../domitry/dormitry-nav/domitry-nav";
 import Header from "../../header/header";
 import StudentProfile from "../../students/students-profile/students-profile";
@@ -14,24 +15,21 @@ import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
 import "./student-profile-page.sass";
 
 const StudentProfilePage = () => {
-  const { id = "0", settlerId = "0" } = useParams();
+  const { id = "0", studentId = "0" } = useParams();
   const dispatch = useDispatch();
   const Auth = useTypedSelector((state) => state.authReducer);
-  const settlerReducer = useTypedSelector(
-    (state) => state.settlerProfileReducer
+  const studentProfileReducer = useTypedSelector(
+    (state) => state.studentProfileReducer
   );
   useEffect(() => {
     if (typeof Auth.user.isAuth === "undefined") {
       dispatch(authGetUserAction());
     }
-    // if (!settlerReducer.getSettler && Auth.user.isAuth) {
-    //   dispatch(
-    //     getSettlerProfileAction(Number.parseInt(id), Number.parseInt(settlerId))
-    //   );
-    //   return () => {
-    //     dispatch(dumpSettlerProfileAction());
-    //   };
-    // }
+    if (!studentProfileReducer.getStudent && Auth.user.isAuth) {
+      dispatch(
+        getStudentProfileAction(Number.parseInt(id), Number.parseInt(studentId))
+      );
+    }
   }, [Auth.user.isAuth]);
 
   if (typeof Auth.user.isAuth === "undefined") {
