@@ -13,6 +13,7 @@ import {
   dumpSettlerProfileAction,
   setSettlerProfileAction,
 } from "../actions/settler-profile-action";
+import { deleteSettlersAction } from "../actions/settlers-actions";
 
 function* getSetttlerProfileSaga({
   type,
@@ -48,6 +49,7 @@ function* deleteSetttlerProfileSaga({
     payload.dormitoryId,
     payload.settlerId
   );
+  yield put(deleteSettlersAction(payload.settlerId));
   yield put(dumpSettlerProfileAction());
 }
 

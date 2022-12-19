@@ -1,7 +1,7 @@
 import { watchAuthSaga } from "./auth-saga";
 import { all } from "@redux-saga/core/effects";
 import { watchDormitrySaga } from "./dormitry-saga";
-import { watchSettlerSaga } from "./settler-saga";
+import { watchSettlerSaga } from "./settlers-saga";
 import { watchStudentsSaga } from "./students-saga";
 import { watchSettlerProfileSaga } from "./settler-profile-saga";
 import { watchRoomsSaga } from "./rooms-saga";

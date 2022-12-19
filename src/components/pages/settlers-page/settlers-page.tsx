@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { ISettler } from "../../../models/settler";
@@ -12,29 +12,41 @@ import { useDispatch } from "react-redux";
 import ErrorAuth from "../../error/error-auth/error-auth";
 import { authGetUserAction } from "../../../store/actions/auth-actions";
 import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
+import { fetchSettlersAction } from "../../../store/actions/settlers-actions";
 
 const SettlersPage = () => {
   const [modalActive, setModalActive] = useState(false);
-  let { id } = useParams();
+  const dispatch = useDispatch();
+  let { id = "0" } = useParams();
   let dormitoryId = -1;
   if (id) {
     dormitoryId = Number.parseInt(id);
   }
-  const authUser = useTypedSelector((state) => state.authReducer);
-  const dispatch = useDispatch();
-  if (authUser.failedAuth) {
-    return <ErrorAuth />;
-  }
-  if (typeof authUser.user.isAuth === "undefined") {
-    dispatch(authGetUserAction());
+  const Auth = useTypedSelector((state) => state.authReducer);
+  const settlersReducer = useTypedSelector((state) => state.settlersReducer);
+  useEffect(() => {
+    if (typeof Auth.user.isAuth === "undefined") {
+      dispatch(authGetUserAction());
+    }
+    if (!settlersReducer.getSettlers && Auth.user.isAuth) {
+      dispatch(fetchSettlersAction(Number.parseInt(id)));
+    }
+  }, [Auth.user.isAuth]);
+
+  if (typeof Auth.user.isAuth === "undefined") {
     return (
       <div className="app__loading">
         <LoadingSpinner />
       </div>
     );
   }
-  if (!authUser.user.isAuth) {
+
+  if (Auth.failedAuth || (!Auth.user.isAuth && !settlersReducer.getSettlers)) {
     return <ErrorAuth />;
+  }
+
+  if (!id) {
+    throw new Error("no id in url living page");
   }
 
   return (

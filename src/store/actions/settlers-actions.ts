@@ -16,6 +16,9 @@ export const setSettlersAction = (settlers: ISettler[]) => {
   return { type: SettlerActionsTypes.SET_SETTLERS, payload: settlers };
 };
 
+export const deleteSettlersAction = (settlerId: number) => {
+  return { type: SettlerActionsTypes.DELETE_SETTLER, payload: settlerId };
+};
 
 export const settleSettlerAction = (
   dormitoryId: number,
