@@ -26,6 +26,7 @@ function* getRoomsSaga({
       floor: el.floor,
       freePlaces: el.free_places,
       dormitory: Number.parseInt(el.dormitory),
+      places: el.places,
     };
     roomArr.push(newRoom);
   });

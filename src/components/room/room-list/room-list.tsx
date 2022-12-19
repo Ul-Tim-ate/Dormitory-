@@ -18,12 +18,17 @@ const RoomList = () => {
   const { id = "0" } = useParams();
   useEffect(() => {
     dispatch(getDormitriesRoomsAction(page, Number.parseInt(id)));
-  }, []);
+  }, [page]);
 
   const displayRooms = getRooms ? (
     rooms.map((el) => {
       return (
-        <RoomItem buzy={el.freePlaces} free={3} roomNumber={el.roomNumber} />
+        <RoomItem
+          key={el.roomNumber}
+          free={el.freePlaces}
+          all={el.places}
+          roomNumber={el.roomNumber}
+        />
       );
     })
   ) : (
@@ -42,8 +47,7 @@ const RoomList = () => {
             className="room-list__arrow"
             onClick={() => {
               setPage((page) => {
-                dispatch(getDormitriesRoomsAction(--page, Number.parseInt(id)));
-                return page;
+                return --page;
               });
             }}
           />
@@ -56,8 +60,7 @@ const RoomList = () => {
           className="room-list__arrow"
           onClick={() => {
             setPage((page) => {
-              dispatch(getDormitriesRoomsAction(++page, Number.parseInt(id)));
-              return page;
+              return ++page;
             });
           }}
         />

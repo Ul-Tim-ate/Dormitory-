@@ -4,18 +4,18 @@ import "./room-item.sass";
 
 interface RoomItemProps {
   roomNumber: number;
+  all: number;
   free: number;
-  buzy: number;
 }
 
-const RoomItem: FC<RoomItemProps> = ({ roomNumber, free, buzy }) => {
+const RoomItem: FC<RoomItemProps> = ({ roomNumber, all, free }) => {
   return (
     <li className="room-item">
       <h3 className="room-item__header">Комната {roomNumber}</h3>
       <span className="room-item__info">
-        Свободных мест: {buzy} из {free}
+        Свободных мест: {free} из {all}
       </span>
-      <MyFillButton>Заселить</MyFillButton>
+      <MyFillButton isDisabled={!free}>Заселить</MyFillButton>
     </li>
   );
 };

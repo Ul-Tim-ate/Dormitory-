@@ -4,4 +4,5 @@ export interface IRoom {
   floor: number;
   freePlaces: number;
   dormitory: number;
+  places: number;
 }
