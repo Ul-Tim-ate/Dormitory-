@@ -48,7 +48,6 @@ function* deleteSetttlerProfileSaga({
     payload.dormitoryId,
     payload.settlerId
   );
-
   yield put(dumpSettlerProfileAction());
 }
 

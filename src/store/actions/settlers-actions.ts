@@ -15,3 +15,14 @@ export const addSettlersAction = (settler: NewSettler, dormitoryId: number) => {
 export const setSettlersAction = (settlers: ISettler[]) => {
   return { type: SettlerActionsTypes.SET_SETTLERS, payload: settlers };
 };
+
+export const settleSettlerAction = (
+  dormitoryId: number,
+  settlerId: number,
+  roomNumber: number
+) => {
+  return {
+    type: SettlerActionsTypes.SETTLE_SETTLER,
+    payload: { dormitoryId, settlerId, roomNumber },
+  };
+};

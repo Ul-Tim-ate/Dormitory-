@@ -38,4 +38,19 @@ export default class SettlersService {
       );
     }
   }
+
+  static async settleSettler(
+    dormitoryId: number,
+    settlerId: number,
+    roomNumber: number
+  ) {
+    try {
+      return $api.post(`/dormitory/${dormitoryId}/students`, {
+        settler_id: settlerId,
+        room_number: roomNumber,
+      });
+    } catch (error) {
+      console.error("Error when settle settler");
+    }
+  }
 }
