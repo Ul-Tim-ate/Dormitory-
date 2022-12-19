@@ -14,6 +14,11 @@ const roomsReducer = (state = initialState, { type, payload }: any) => {
         rooms: payload,
         getRooms: true,
       };
+    case RoomsAction.GET_ROOMS:
+      return {
+        ...state,
+        getRooms: false,
+      };
     default:
       return state;
   }

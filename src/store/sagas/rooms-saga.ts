@@ -13,14 +13,13 @@ function* getRoomsSaga({
   type: string;
   payload: { domitoryId: number; page: number };
 }) {
-  const response: AxiosResponse<RoomResponse[]> = yield call(
+  const response: AxiosResponse<RoomResponse> = yield call(
     RoomsService.getRoomsDormitries,
     payload.domitoryId,
     payload.page
   );
-  console.log(response);
   const roomArr = [] as IRoom[];
-  response.data.forEach((el) => {
+  response.data.rooms.forEach((el) => {
     const newRoom = {
       id: el.id,
       roomNumber: el.room_number,
@@ -30,8 +29,7 @@ function* getRoomsSaga({
     };
     roomArr.push(newRoom);
   });
-  console.log(roomArr, "roomArr");
-  put(setDormitriesRoomsAction(roomArr));
+  yield put(setDormitriesRoomsAction(roomArr));
 }
 
 function* watchGetRoomsSaga() {

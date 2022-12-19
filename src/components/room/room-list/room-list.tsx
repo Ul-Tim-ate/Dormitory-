@@ -1,21 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RoomItem from "../room-item/room-item";
 import "./room-list.sass";
 import leftArrow from "./arrow-left.svg";
 import rightArrow from "./arrow-right.svg";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
+import { getDormitriesRoomsAction } from "../../../store/actions/rooms-actions";
+import { useParams } from "react-router-dom";
+import { IRoom } from "../../../models/room";
 
 const RoomList = () => {
   const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
+  const { rooms, getRooms }: { rooms: IRoom[]; getRooms: boolean } =
+    useTypedSelector((state) => state.roomsReducer);
+  const { id = "0" } = useParams();
+  useEffect(() => {
+    dispatch(getDormitriesRoomsAction(page, Number.parseInt(id)));
+  }, []);
+
+  const displayRooms = getRooms ? (
+    rooms.map((el) => {
+      return (
+        <RoomItem buzy={el.freePlaces} free={3} roomNumber={el.roomNumber} />
+      );
+    })
+  ) : (
+    <div className="room-list__loading">
+      <LoadingSpinner />
+    </div>
+  );
   return (
     <>
-      <ul className="room-list">
-        <RoomItem buzy={1} free={2} roomNumber={394} />
-        <RoomItem buzy={1} free={2} roomNumber={394} />
-        <RoomItem buzy={1} free={2} roomNumber={394} />
-        <RoomItem buzy={1} free={2} roomNumber={394} />
-        <RoomItem buzy={1} free={2} roomNumber={394} />
-        <RoomItem buzy={1} free={2} roomNumber={394} />
-      </ul>
+      <ul className="room-list">{displayRooms}</ul>
       <div className="room-list__arrows">
         {page > 1 ? (
           <img
@@ -24,7 +42,8 @@ const RoomList = () => {
             className="room-list__arrow"
             onClick={() => {
               setPage((page) => {
-                return --page;
+                dispatch(getDormitriesRoomsAction(--page, Number.parseInt(id)));
+                return page;
               });
             }}
           />
@@ -37,7 +56,8 @@ const RoomList = () => {
           className="room-list__arrow"
           onClick={() => {
             setPage((page) => {
-              return ++page;
+              dispatch(getDormitriesRoomsAction(++page, Number.parseInt(id)));
+              return page;
             });
           }}
         />
