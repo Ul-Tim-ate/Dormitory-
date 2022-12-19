@@ -24,14 +24,14 @@ const StudentProfilePage = () => {
     if (typeof Auth.user.isAuth === "undefined") {
       dispatch(authGetUserAction());
     }
-    if (!settlerReducer.getSettler && Auth.user.isAuth) {
-      dispatch(
-        getSettlerProfileAction(Number.parseInt(id), Number.parseInt(settlerId))
-      );
-      return () => {
-        dispatch(dumpSettlerProfileAction());
-      };
-    }
+    // if (!settlerReducer.getSettler && Auth.user.isAuth) {
+    //   dispatch(
+    //     getSettlerProfileAction(Number.parseInt(id), Number.parseInt(settlerId))
+    //   );
+    //   return () => {
+    //     dispatch(dumpSettlerProfileAction());
+    //   };
+    // }
   }, [Auth.user.isAuth]);
 
   if (typeof Auth.user.isAuth === "undefined") {

@@ -16,8 +16,7 @@ function App() {
   return (
     <ErrorBoundary>
       <div className="App">
-        <StudentProfilePage />
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<AuthPage />} />
           <Route path="/auth/registration" element={<RegistPage />} />
           <Route path="/auth/user/:id" element={<ProfilePage />} />
@@ -29,11 +28,11 @@ function App() {
             element={<SettlersProfilePage />}
           />
           <Route
-            path="/dormitory/{id}/students/{studentId}"
-            element={<SettlersProfilePage />}
+            path="/domitry/:id/students/:studentId"
+            element={<StudentProfilePage />}
           />
           <Route path="*" element={<ErrorIndicator />} />
-        </Routes> */}
+        </Routes>
       </div>
     </ErrorBoundary>
   );

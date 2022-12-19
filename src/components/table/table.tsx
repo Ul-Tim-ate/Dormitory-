@@ -7,10 +7,10 @@ import { IStudent } from "../../models/student";
 interface TableProps {
   rows: ISettler[] | IStudent[];
   headers: string[];
+  path: string;
 }
 
-const Table: FC<TableProps> = ({ rows, headers }) => {
-  const { id = "0" } = useParams();
+const Table: FC<TableProps> = ({ rows, headers, path }) => {
   return (
     <table className="dorm-table" cellSpacing={0}>
       <tbody>
@@ -26,7 +26,7 @@ const Table: FC<TableProps> = ({ rows, headers }) => {
         {rows.map((el) => {
           let newRow = (
             <td className="dorm-table__cell">
-              <Link to={`/domitry/${id}/settlers/${el.id}`}>
+              <Link to={`${path}/${el.id}`}>
                 <b>{el.fullname}</b> <br /> {el.email}
               </Link>
             </td>

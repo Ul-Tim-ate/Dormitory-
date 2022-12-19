@@ -33,7 +33,9 @@ const SettlersTable = () => {
       </div>
     );
   }
-  return <Table rows={settlers} headers={headers} />;
+  return (
+    <Table rows={settlers} headers={headers} path={`/domitry/${id}/settlers`} />
+  );
 };
 
 export default SettlersTable;

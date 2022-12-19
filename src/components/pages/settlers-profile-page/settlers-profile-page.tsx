@@ -43,11 +43,9 @@ const SettlersProfilePage = () => {
       </div>
     );
   }
-
   if (Auth.failedAuth || (!Auth.user.isAuth && !settlerReducer.getSettler)) {
     return <ErrorAuth />;
   }
-
   return (
     <section className="settlers-profile-page">
       <div className="container">
