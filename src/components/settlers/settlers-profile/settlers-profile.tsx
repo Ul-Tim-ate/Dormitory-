@@ -28,6 +28,36 @@ const SettlersProfile = () => {
       </div>
     );
   }
+  const displayButtons = !roomList ? (
+    <div className="settlers-profile__btns">
+      <button
+        className="settlers-profile__btn"
+        onClick={() => {
+          setRoomList(true);
+        }}
+      >
+        Подобрать комнату
+      </button>
+      <button
+        className="settlers-profile__btn settlers-profile__btn-del"
+        onClick={() => {
+          dispatch(
+            deleteSettlerProfileAction(
+              Number.parseInt(id),
+              Number.parseInt(settlerId)
+            )
+          );
+          navigate(`/domitry/${id}/settlers`);
+        }}
+      >
+        Удалить
+      </button>
+    </div>
+  ) : (
+    <div className="settlers-profile__room-list">
+      <RoomList />
+    </div>
+  );
   return (
     <section className="settlers-profile">
       <div className="settlers-profile__top">
@@ -75,37 +105,7 @@ const SettlersProfile = () => {
           </ul>
         </div>
       </div>
-      <div className="settlers-profile__btns">
-        <button
-          className="settlers-profile__btn"
-          onClick={() => {
-            setRoomList(true);
-          }}
-        >
-          Подобрать комнату
-        </button>
-        <button
-          className="settlers-profile__btn settlers-profile__btn-del"
-          onClick={() => {
-            dispatch(
-              deleteSettlerProfileAction(
-                Number.parseInt(id),
-                Number.parseInt(settlerId)
-              )
-            );
-            navigate(`/domitry/${id}/settlers`);
-          }}
-        >
-          Удалить
-        </button>
-      </div>
-      {roomList ? (
-        <div className="settlers-profile__room-list">
-          <RoomList />
-        </div>
-      ) : (
-        <></>
-      )}
+      {displayButtons}
     </section>
   );
 };
