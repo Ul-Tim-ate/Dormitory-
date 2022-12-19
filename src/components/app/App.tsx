@@ -10,12 +10,14 @@ import ErrorIndicator from "../error/error-indicator/error-indicator";
 import SettlersPage from "../pages/settlers-page/settlers-page";
 import LivingsPage from "../pages/livings-page/livings-page";
 import SettlersProfilePage from "../pages/settlers-profile-page/settlers-profile-page";
+import StudentProfilePage from "../pages/student-profile-page/student-profile-page";
 
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
-        <Routes>
+        <StudentProfilePage />
+        {/* <Routes>
           <Route path="/" element={<AuthPage />} />
           <Route path="/auth/registration" element={<RegistPage />} />
           <Route path="/auth/user/:id" element={<ProfilePage />} />
@@ -26,8 +28,12 @@ function App() {
             path="/domitry/:id/settlers/:settlerId"
             element={<SettlersProfilePage />}
           />
+          <Route
+            path="/dormitory/{id}/students/{studentId}"
+            element={<SettlersProfilePage />}
+          />
           <Route path="*" element={<ErrorIndicator />} />
-        </Routes>
+        </Routes> */}
       </div>
     </ErrorBoundary>
   );

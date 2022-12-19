@@ -1,0 +1,89 @@
+.students-profile
+  width: 832px
+  &__top
+    padding: 10px
+    display: flex
+    justify-content: space-between
+    margin-bottom: 20px
+  &__nav
+    &-list
+      display: flex
+    &-item
+      font-family: 'Inter'
+      font-size: 16px
+      line-height: 19px
+      display: flex
+      margin-right: 20px
+      &:not(:first-child)::before
+        content: ''
+        display: block
+        width: 10px
+        height: 20px
+        background: url('./arrow.svg') no-repeat
+        margin-right: 20px
+  &__rewrite
+    cursor: pointer
+    display: flex
+    align-items: center
+    font-family: 'Inter'
+    font-size: 16px
+    line-height: 19px
+    &::before
+      content: ''
+      display: block
+      width: 23px
+      height: 25px
+      background: url('./rewrite.svg') no-repeat center
+      margin-right: 16px
+      background-size: contain
+      cursor: pointer
+  &__info
+    display: flex
+    margin-bottom: 40px
+  &__img
+    width: 167px
+    height: 167px
+    margin-right: 20px
+  &__text
+    font-family: 'Inter'
+    font-size: 16px
+    line-height: 19px
+  &__name
+    font-weight: 600
+    margin-bottom: 25px
+  &__list-item
+    display: flex
+    align-items: center
+    &:not(:last-child)
+      margin-bottom: 10px
+  &__list-img
+    margin-right: 10px
+    width: 30px
+    height: 30px
+  &__btn
+    display: block
+    font-family: 'Inter'
+    font-size: 20px
+    line-height: 24px
+    padding: 13px 20px
+    border-radius: 10px
+    transition: 0.3s
+    &:not(:last-child)
+      margin-right: 40px
+    &-remove
+      color: #E63946
+      border: 2px solid #E63946
+      &:hover
+        color: white
+        background-color: #E63946
+    &-resettle
+      color: #3356D9
+      border: 2px solid #3356D9
+      &:hover
+        color: white
+        background-color: #3356D9
+  &__btns
+    display: flex
+    justify-content: center
+  &__room-list
+    margin-top: 30px
