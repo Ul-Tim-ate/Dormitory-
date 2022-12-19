@@ -22,6 +22,15 @@ const studentsReducer = (state = initialState, { type, payload }: any) => {
         getStudents: false,
         students: [],
       };
+    case StudentsActionsTypes.DELETE_STUDENT:
+      console.log(payload);
+      const newState = state.students.filter((el) => {
+        return el.id !== payload.studentId;
+      });
+      return {
+        ...state,
+        students: newState,
+      };
     default:
       return state;
   }

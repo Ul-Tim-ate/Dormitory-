@@ -7,3 +7,7 @@ export const fetchStudentsAction = (id: number) => {
 export const setStudentsAction = (students: IStudent[]) => {
   return { type: StudentsActionsTypes.SET_STUDENTS, payload: students };
 };
+
+export const deleteStudentAction = (student: IStudent) => {
+  return { type: StudentsActionsTypes.DELETE_STUDENT, payload: student.id };
+};

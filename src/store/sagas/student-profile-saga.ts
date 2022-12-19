@@ -16,7 +16,10 @@ import {
   dumpSettlerProfileAction,
   setSettlerProfileAction,
 } from "../actions/settler-profile-action";
-import { setStudentProfileAction } from "../actions/student-profile.-actions";
+import {
+  dumpStudentProfileAction,
+  setStudentProfileAction,
+} from "../actions/student-profile.-actions";
 
 function* getStudentProfileSaga({
   type,
@@ -51,9 +54,7 @@ function* deleteStudentProfileSaga({
     payload.dormitoryId,
     payload.studentId
   );
-  console.log(response);
-
-  yield put(setStudentProfileAction(response.data.student));
+  yield put(dumpStudentProfileAction());
 }
 
 function* watchGetStudentProfileSaga() {
