@@ -65,7 +65,7 @@ const StudentProfile = () => {
     useTypedSelector((state) => state.studentProfileReducer);
   if (!getStudent) {
     return (
-      <div className="students-table__loading">
+      <div className="students-profile__loading">
         <LoadingSpinner />
       </div>
     );

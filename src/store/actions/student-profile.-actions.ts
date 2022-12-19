@@ -17,3 +17,9 @@ export const setStudentProfileAction = (student: IStudent) => {
     payload: { ...student },
   };
 };
+
+export const dumpStudentProfileAction = () => {
+  return {
+    type: StudentProfileActions.DUMP_STUDENT,
+  };
+};

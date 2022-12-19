@@ -17,6 +17,12 @@ const studentProfileReducer = (
         student: payload,
         getStudent: true,
       };
+    case StudentProfileActions.DUMP_STUDENT:
+      return {
+        ...state,
+        student: {} as IStudent,
+        getStudent: false,
+      };
     default:
       return state;
   }

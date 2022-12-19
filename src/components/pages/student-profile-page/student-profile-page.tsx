@@ -4,10 +4,9 @@ import { useParams } from "react-router-dom";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { authGetUserAction } from "../../../store/actions/auth-actions";
 import {
-  getSettlerProfileAction,
-  dumpSettlerProfileAction,
-} from "../../../store/actions/settler-profile-action";
-import { getStudentProfileAction } from "../../../store/actions/student-profile.-actions";
+  dumpStudentProfileAction,
+  getStudentProfileAction,
+} from "../../../store/actions/student-profile.-actions";
 import DomitryNav from "../../domitry/dormitry-nav/domitry-nav";
 import Header from "../../header/header";
 import StudentProfile from "../../students/students-profile/students-profile";
@@ -30,6 +29,9 @@ const StudentProfilePage = () => {
         getStudentProfileAction(Number.parseInt(id), Number.parseInt(studentId))
       );
     }
+    return () => {
+      dispatch(dumpStudentProfileAction());
+    };
   }, [Auth.user.isAuth]);
 
   if (typeof Auth.user.isAuth === "undefined") {
