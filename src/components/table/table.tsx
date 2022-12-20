@@ -3,9 +3,10 @@ import "./table.sass";
 import { ISettler } from "../../models/settler";
 import { Link, useParams } from "react-router-dom";
 import { IStudent } from "../../models/student";
+import { IRoom } from "../../models/room";
 
 interface TableProps {
-  rows: ISettler[] | IStudent[];
+  rows: ISettler[] | IStudent[] | IRoom[];
   headers: string[];
   path: string;
 }
@@ -24,16 +25,20 @@ const Table: FC<TableProps> = ({ rows, headers, path }) => {
           })}
         </tr>
         {rows.map((el) => {
-          let newRow = (
-            <td className="dorm-table__cell">
-              <Link to={`${path}/${el.id}`}>
-                <b>{el.fullname}</b> <br /> {el.email}
-              </Link>
-            </td>
-          );
+          let newRow;
+          if ("fullname" in el && "email" in el) {
+            newRow = (
+              <td className="dorm-table__cell">
+                <Link to={`${path}/${el.id}`}>
+                  <b>{el.fullname}</b> <br /> {el.email}
+                </Link>
+              </td>
+            );
+          }
+
           for (const key in el) {
             if (Object.prototype.hasOwnProperty.call(el, key)) {
-              if (key === "fullname" || key === "id" || key === "email") {
+              if (key === "fullname" || key === "id" || key === "email" || key === "dormitory") {
                 continue;
               }
               if (key === "flg") {
@@ -57,7 +62,7 @@ const Table: FC<TableProps> = ({ rows, headers, path }) => {
               );
             }
           }
-          return <tr key={el.email}>{newRow}</tr>;
+          return <tr key={el.id}>{newRow}</tr>;
         })}
       </tbody>
     </table>

@@ -11,6 +11,7 @@ import SettlersPage from "../pages/settlers-page/settlers-page";
 import LivingsPage from "../pages/livings-page/livings-page";
 import SettlersProfilePage from "../pages/settlers-profile-page/settlers-profile-page";
 import StudentProfilePage from "../pages/student-profile-page/student-profile-page";
+import RoomsPage from "../pages/rooms-page/rooms-page";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             path="/domitry/:id/students/:studentId"
             element={<StudentProfilePage />}
           />
+          <Route path="/domitry/:id/rooms" element={<RoomsPage />} />
           <Route path="*" element={<ErrorIndicator />} />
         </Routes>
       </div>
