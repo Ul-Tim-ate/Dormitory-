@@ -19,6 +19,7 @@ import {
 } from "../actions/settler-profile-action";
 import {
   dumpStudentProfileAction,
+  getStudentProfileAction,
   setStudentProfileAction,
 } from "../actions/student-profile.-actions";
 
@@ -59,7 +60,8 @@ function* changeStudentProfileSaga({
     payload.dormitoryId,
     payload.student
   );
-  yield put(setStudentProfileAction(payload.student));
+  yield put(dumpStudentProfileAction());
+  yield put(getStudentProfileAction(payload.dormitoryId, payload.student.id));
 }
 
 function* deleteStudentProfileSaga({
