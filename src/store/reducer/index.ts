@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import authReducer from "./auth-reducer";
 import dormitryReducer from "./dormitry-reducer";
+import roomProfileReducer from "./room-profile-reducer";
 import roomsReducer from "./rooms-reducer";
 import settlerProfileReducer from "./settler-profile-reducer";
 import settlersReducer from "./settlers-reducer";
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   settlerProfileReducer,
   roomsReducer,
   studentProfileReducer,
+  roomProfileReducer,
 });
 
 export default rootReducer;

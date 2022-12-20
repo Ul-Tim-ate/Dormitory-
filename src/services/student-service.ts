@@ -22,6 +22,15 @@ export default class StudentsService {
     );
   }
 
+  static async getStudentsByRoom(
+    dormitoryId: number,
+    roomNumber: number
+  ): Promise<AxiosResponse<StudentsResponse>> {
+    return $api.get<StudentsResponse>(
+      `/dormitory/${dormitoryId}/rooms/${roomNumber}/students`
+    );
+  }
+
   static async changeStudentProfile(
     dormitoryId: number,
     student: IStudent

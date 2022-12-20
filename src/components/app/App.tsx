@@ -12,6 +12,7 @@ import LivingsPage from "../pages/livings-page/livings-page";
 import SettlersProfilePage from "../pages/settlers-profile-page/settlers-profile-page";
 import StudentProfilePage from "../pages/student-profile-page/student-profile-page";
 import RoomsPage from "../pages/rooms-page/rooms-page";
+import RoomProfilePage from "../pages/room-profile-page/room-profile-page";
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
             element={<StudentProfilePage />}
           />
           <Route path="/domitry/:id/rooms" element={<RoomsPage />} />
+          <Route
+            path="/domitry/:id/rooms/:roomId"
+            element={<RoomProfilePage />}
+          />
           <Route path="*" element={<ErrorIndicator />} />
         </Routes>
       </div>

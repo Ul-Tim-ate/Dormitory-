@@ -40,7 +40,7 @@ const Table: FC<TableProps> = ({ rows, headers, path }) => {
           if ("roomNumber" in el) {
             newRow = (
               <td className="dorm-table__cell">
-                <Link to={`${path}/${el.id}`}>
+                <Link to={`${path}/${el.roomNumber}`}>
                   <b>{el.roomNumber}</b>
                 </Link>
               </td>
