@@ -5,7 +5,7 @@ export interface StudentsResponse {
     email: string;
     phone: string;
     flg: true;
-    room: string;
+    room: number;
   }[];
 }
 

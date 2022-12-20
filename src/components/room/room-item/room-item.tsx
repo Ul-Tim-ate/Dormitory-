@@ -1,7 +1,10 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import { IStudent } from "../../../models/student";
 import { settleSettlerAction } from "../../../store/actions/settlers-actions";
+import { resellteStudentProfileAction } from "../../../store/actions/student-profile.-actions";
 import MyFillButton from "../../UI/fill-button/MyFillButton";
 import "./room-item.sass";
 
@@ -9,11 +12,19 @@ interface RoomItemProps {
   roomNumber: number;
   all: number;
   free: number;
+  resellte?: boolean;
 }
-
-const RoomItem: FC<RoomItemProps> = ({ roomNumber, all, free }) => {
+const RoomItem: FC<RoomItemProps> = ({
+  roomNumber,
+  all,
+  free,
+  resellte = false,
+}) => {
   const dispatch = useDispatch();
   const { id = "0", settlerId = "0" } = useParams();
+  const navigate = useNavigate();
+  const { student, getStudent }: { student: IStudent; getStudent: boolean } =
+    useTypedSelector((state) => state.studentProfileReducer);
   return (
     <li className="room-item">
       <h3 className="room-item__header">Комната {roomNumber}</h3>
@@ -22,6 +33,13 @@ const RoomItem: FC<RoomItemProps> = ({ roomNumber, all, free }) => {
       </span>
       <div
         onClick={() => {
+          if (resellte) {
+            const newStudent = { ...student, room: roomNumber };
+            dispatch(
+              resellteStudentProfileAction(newStudent, Number.parseInt(id))
+            );
+            return;
+          }
           dispatch(
             settleSettlerAction(
               Number.parseInt(id),
@@ -29,6 +47,7 @@ const RoomItem: FC<RoomItemProps> = ({ roomNumber, all, free }) => {
               roomNumber
             )
           );
+          navigate(`/domitry/${id}/students`);
         }}
       >
         <MyFillButton isDisabled={!free}>Заселить</MyFillButton>

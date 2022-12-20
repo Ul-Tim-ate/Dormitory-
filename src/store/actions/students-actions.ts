@@ -11,3 +11,7 @@ export const setStudentsAction = (students: IStudent[]) => {
 export const deleteStudentAction = (student: IStudent) => {
   return { type: StudentsActionsTypes.DELETE_STUDENT, payload: student.id };
 };
+
+export const addStudentAction = (student: IStudent) => {
+  return { type: StudentsActionsTypes.ADD_STUDENT, payload: student };
+};

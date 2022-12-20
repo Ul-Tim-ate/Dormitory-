@@ -18,6 +18,16 @@ export const setStudentProfileAction = (student: IStudent) => {
   };
 };
 
+export const resellteStudentProfileAction = (
+  student: IStudent,
+  dormitoryId: number
+) => {
+  return {
+    type: StudentProfileActions.CHANGE_STUDENT,
+    payload: { dormitoryId, student },
+  };
+};
+
 export const dumpStudentProfileAction = () => {
   return {
     type: StudentProfileActions.DUMP_STUDENT,

@@ -68,19 +68,6 @@ const NewStudent: FC<NewStudentProps> = ({ setModalActive, dormitoryId }) => {
         </div>
         <span className="new-student__flg">ФЛГ</span>
         <MyRadioCheckbox change={setFlg} />
-        <label htmlFor="photo" className="new-student__label">
-          Фото
-        </label>
-        <input
-          id="photo"
-          type="file"
-          accept="image/png,image/jpeg"
-          className="new-student__input-file"
-        />
-        <label htmlFor="photo" className="new-student__label-photo">
-          <img src={buttonImg} alt="Иконка загрузки фотографии" /> Загрузить
-          фото
-        </label>
         <div className="new-student__buttons">
           <MyFillButton>Сохранить</MyFillButton>
           <MyClearButton setModalActive={setModalActive}>Отмена</MyClearButton>

@@ -15,53 +15,14 @@ import { deleteSettlerProfileAction } from "../../../store/actions/settler-profi
 import { useNavigate, useParams } from "react-router-dom";
 import RoomList from "../../room/room-list/room-list";
 import { IStudent } from "../../../models/student";
-import { deleteStudentProfileAction } from "../../../store/actions/student-profile.-actions";
+import {
+  deleteStudentProfileAction,
+  resellteStudentProfileAction,
+} from "../../../store/actions/student-profile.-actions";
 
 const StudentProfile = () => {
-  // const { settler, getSettler }: { settler: ISettler; getSettler: boolean } =
-  //   useTypedSelector((state) => state.settlerProfileReducer);
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const [roomList, setRoomList] = useState(false);
-  // if (!getSettler) {
-  //   return (
-  //     <div className="students-table__loading">
-  //       <LoadingSpinner />
-  //     </div>
-  //   );
-  // }
-  // const displayButtons = !roomList ? (
-  //   <div className="students-profile__btns">
-  //     <button
-  //       className="students-profile__btn"
-  //       onClick={() => {
-  //         setRoomList(true);
-  //       }}
-  //     >
-  //       Подобрать комнату
-  //     </button>
-  //     <button
-  //       className="students-profile__btn students-profile__btn-del"
-  //       onClick={() => {
-  //         dispatch(
-  //           deleteSettlerProfileAction(
-  //             Number.parseInt(id),
-  //             Number.parseInt(settlerId)
-  //           )
-  //         );
-  //         navigate(`/domitry/${id}/students`);
-  //       }}
-  //     >
-  //       Удалить
-  //     </button>
-  //   </div>
-  // ) : (
-  //   <div className="students-profile__room-list">
-  //     <RoomList />
-  //   </div>
-  // );
-
   const dispatch = useDispatch();
+  const [roomList, setRoomList] = useState(false);
   const { student, getStudent }: { student: IStudent; getStudent: boolean } =
     useTypedSelector((state) => state.studentProfileReducer);
   const { id = "0", studentId = "0" } = useParams();
@@ -73,6 +34,36 @@ const StudentProfile = () => {
       </div>
     );
   }
+  const displayButtons = !roomList ? (
+    <div className="students-profile__btns">
+      <button
+        className="students-profile__btn students-profile__btn-resettle "
+        onClick={() => {
+          setRoomList(true);
+        }}
+      >
+        Переселить
+      </button>
+      <button
+        className="students-profile__btn students-profile__btn-remove"
+        onClick={() => {
+          dispatch(
+            deleteStudentProfileAction(
+              Number.parseInt(id),
+              Number.parseInt(studentId)
+            )
+          );
+          navigate(`/domitry/${id}/students`);
+        }}
+      >
+        Выселить
+      </button>
+    </div>
+  ) : (
+    <div className="students-profile__room-list">
+      <RoomList resellte={true} />
+    </div>
+  );
   return (
     <section className="students-profile">
       <div className="students-profile__top">
@@ -123,25 +114,7 @@ const StudentProfile = () => {
           </ul>
         </div>
       </div>
-      <div className="students-profile__btns">
-        <button className="students-profile__btn students-profile__btn-resettle ">
-          Переселить
-        </button>
-        <button
-          className="students-profile__btn students-profile__btn-remove"
-          onClick={() => {
-            dispatch(
-              deleteStudentProfileAction(
-                Number.parseInt(id),
-                Number.parseInt(studentId)
-              )
-            );
-            navigate(`/domitry/${id}/students`);
-          }}
-        >
-          Выселить
-        </button>
-      </div>
+      {displayButtons}
     </section>
   );
 };

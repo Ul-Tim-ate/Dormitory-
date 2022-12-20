@@ -4,6 +4,7 @@ import {
   StudentProfileResponse,
   StudentsResponse,
 } from "../models/response/students-response";
+import { IStudent } from "../models/student";
 
 export default class StudentsService {
   static async getDormitoryStudents(
@@ -18,6 +19,16 @@ export default class StudentsService {
   ): Promise<AxiosResponse<StudentsResponse>> {
     return $api.get<StudentsResponse>(
       `/dormitory/${dormitoryId}/students/${studentId}`
+    );
+  }
+
+  static async changeStudentProfile(
+    dormitoryId: number,
+    student: IStudent
+  ): Promise<AxiosResponse<StudentsResponse>> {
+    return $api.put<StudentsResponse>(
+      `/dormitory/${dormitoryId}/students/${student.id}`,
+      { ...student }
     );
   }
 

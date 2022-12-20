@@ -31,6 +31,11 @@ const studentsReducer = (state = initialState, { type, payload }: any) => {
         ...state,
         students: newState,
       };
+    case StudentsActionsTypes.ADD_STUDENT:
+      return {
+        ...state,
+        students: [...state.students, { ...payload }],
+      };
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import RoomItem from "../room-item/room-item";
 import "./room-list.sass";
 import leftArrow from "./arrow-left.svg";
@@ -9,8 +9,13 @@ import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
 import { getDormitriesRoomsAction } from "../../../store/actions/rooms-actions";
 import { useParams } from "react-router-dom";
 import { IRoom } from "../../../models/room";
+import { IStudent } from "../../../models/student";
 
-const RoomList = () => {
+interface RoomListProps {
+  resellte?: boolean;
+}
+
+const RoomList: FC<RoomListProps> = ({ resellte = false }) => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const { rooms, getRooms }: { rooms: IRoom[]; getRooms: boolean } =
@@ -28,6 +33,7 @@ const RoomList = () => {
           free={el.freePlaces}
           all={el.places}
           roomNumber={el.roomNumber}
+          resellte={resellte}
         />
       );
     })

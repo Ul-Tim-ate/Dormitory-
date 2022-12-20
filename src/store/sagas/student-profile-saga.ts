@@ -8,6 +8,7 @@ import {
 import { AxiosResponse } from "axios";
 import { SettlerProfileResponse } from "../../models/response/settler-profile-response";
 import { StudentProfileResponse } from "../../models/response/students-response";
+import { IStudent } from "../../models/student";
 import SettlersService from "../../services/settler-service";
 import StudentsService from "../../services/student-service";
 import { SettlerProfileActions } from "../../types/actions/settler-profile-actions";
@@ -36,7 +37,29 @@ function* getStudentProfileSaga({
     payload.dormitoryId,
     payload.studentId
   );
-  yield put(setStudentProfileAction(response.data.student));
+  const student = {
+    ...response.data.student,
+    room: Number.parseInt(response.data.student.room),
+  };
+  yield put(setStudentProfileAction(student));
+}
+
+function* changeStudentProfileSaga({
+  type,
+  payload,
+}: {
+  type: string;
+  payload: {
+    dormitoryId: number;
+    student: IStudent;
+  };
+}) {
+  const response: AxiosResponse<StudentProfileResponse> = yield call(
+    StudentsService.changeStudentProfile,
+    payload.dormitoryId,
+    payload.student
+  );
+  yield put(setStudentProfileAction(payload.student));
 }
 
 function* deleteStudentProfileSaga({
@@ -61,6 +84,13 @@ function* watchGetStudentProfileSaga() {
   yield takeLatest(StudentProfileActions.GET_STUDENT, getStudentProfileSaga);
 }
 
+function* watchChangeStudentProfileSaga() {
+  yield takeLatest(
+    StudentProfileActions.CHANGE_STUDENT,
+    changeStudentProfileSaga
+  );
+}
+
 function* watchDeleteStudentProfileSaga() {
   yield takeLatest(
     StudentProfileActions.DELETE_STUDENT,
@@ -69,5 +99,9 @@ function* watchDeleteStudentProfileSaga() {
 }
 
 export function* watchStudentProfileSaga() {
-  yield all([watchGetStudentProfileSaga(), watchDeleteStudentProfileSaga()]);
+  yield all([
+    watchGetStudentProfileSaga(),
+    watchDeleteStudentProfileSaga(),
+    watchChangeStudentProfileSaga(),
+  ]);
 }

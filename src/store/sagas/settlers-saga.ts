@@ -1,6 +1,7 @@
 import { takeEvery, all, call, put } from "@redux-saga/core/effects";
 import { AxiosResponse } from "axios";
 import { SettlerResponse } from "../../models/response/settlers-response";
+import { StudentProfileResponse } from "../../models/response/students-response";
 import { ISettler } from "../../models/settler";
 import SettlersService from "../../services/settler-service";
 import { SettlerActionsTypes } from "../../types/actions/settler-action";
@@ -9,6 +10,7 @@ import {
   fetchSettlersAction,
   setSettlersAction,
 } from "../actions/settlers-actions";
+import { addStudentAction } from "../actions/students-actions";
 
 function* fetchDormitorySettlersSaga({
   type,
@@ -21,7 +23,6 @@ function* fetchDormitorySettlersSaga({
     SettlersService.getDormitorySettlers,
     payload
   );
-  console.log("fetchSettlers", response.data);
 
   yield put(setSettlersAction(response.data.settlers));
 }
@@ -55,12 +56,17 @@ function* settleSettlerToDormitorySaga({
     roomNumber: number;
   };
 }) {
-  const response: AxiosResponse<SettlerResponse> = yield call(
+  const response: AxiosResponse<StudentProfileResponse> = yield call(
     SettlersService.settleSettler,
     payload.dormitoryId,
     payload.settlerId,
     payload.roomNumber
   );
+  const student = {
+    ...response.data.student,
+    room: Number.parseInt(response.data.student.room),
+  };
+  yield put(addStudentAction(student));
 }
 
 function* watchFetchDormitorySettlersSaga() {
