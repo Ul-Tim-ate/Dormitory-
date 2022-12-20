@@ -12,6 +12,8 @@ interface TableProps {
 }
 
 const Table: FC<TableProps> = ({ rows, headers, path }) => {
+  console.log(rows);
+
   return (
     <table className="dorm-table" cellSpacing={0}>
       <tbody>
@@ -35,10 +37,24 @@ const Table: FC<TableProps> = ({ rows, headers, path }) => {
               </td>
             );
           }
-
+          if ("roomNumber" in el) {
+            newRow = (
+              <td className="dorm-table__cell">
+                <Link to={`${path}/${el.id}`}>
+                  <b>{el.roomNumber}</b>
+                </Link>
+              </td>
+            );
+          }
           for (const key in el) {
             if (Object.prototype.hasOwnProperty.call(el, key)) {
-              if (key === "fullname" || key === "id" || key === "email" || key === "dormitory") {
+              if (
+                key === "fullname" ||
+                key === "id" ||
+                key === "email" ||
+                key === "dormitory" ||
+                key === "roomNumber"
+              ) {
                 continue;
               }
               if (key === "flg") {
