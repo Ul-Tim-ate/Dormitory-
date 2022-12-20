@@ -67,6 +67,7 @@ function* settleSettlerToDormitorySaga({
     room: Number.parseInt(response.data.student.room),
   };
   yield put(addStudentAction(student));
+  yield put(fetchSettlersAction(payload.dormitoryId));
 }
 
 function* watchFetchDormitorySettlersSaga() {

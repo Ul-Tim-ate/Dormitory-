@@ -25,6 +25,9 @@ const DomitryNav: FC<DomitryNavProps> = ({ dormitoryId }) => {
         >
           Проживающие
         </Link>
+        <Link className="dorm-nav__item" to={`/domitry/${dormitoryId}/rooms`}>
+          Комнаты
+        </Link>
       </ul>
     </nav>
   );

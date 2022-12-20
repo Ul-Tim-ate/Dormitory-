@@ -28,6 +28,9 @@ const StudentProfile = () => {
   const { id = "0", studentId = "0" } = useParams();
   const navigate = useNavigate();
   if (!getStudent) {
+    if (roomList) {
+      setRoomList(false);
+    }
     return (
       <div className="students-profile__loading">
         <LoadingSpinner />
