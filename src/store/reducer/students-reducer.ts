@@ -16,6 +16,12 @@ const studentsReducer = (state = initialState, { type, payload }: any) => {
         students: payload,
         getStudents: true,
       };
+    case StudentsActionsTypes.DUMP_STUDENT:
+      return {
+        ...state,
+        getStudents: false,
+        students: [],
+      };
     case StudentsActionsTypes.LOGOUT:
       return {
         ...state,

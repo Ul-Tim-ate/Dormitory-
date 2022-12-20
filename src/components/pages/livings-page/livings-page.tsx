@@ -3,7 +3,10 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { authGetUserAction } from "../../../store/actions/auth-actions";
-import { fetchStudentsAction } from "../../../store/actions/students-actions";
+import {
+  dumpStudentAction,
+  fetchStudentsAction,
+} from "../../../store/actions/students-actions";
 import DomitryNav from "../../domitry/dormitry-nav/domitry-nav";
 import ErrorAuth from "../../error/error-auth/error-auth";
 import Header from "../../header/header";
@@ -23,6 +26,9 @@ const LivingsPage = () => {
     if (!studentsReducer.getStudents && Auth.user.isAuth) {
       dispatch(fetchStudentsAction(Number.parseInt(id)));
     }
+    return () => {
+      dispatch(dumpStudentAction());
+    };
   }, [Auth.user.isAuth]);
 
   if (typeof Auth.user.isAuth === "undefined") {

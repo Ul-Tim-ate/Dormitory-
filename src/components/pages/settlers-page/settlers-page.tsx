@@ -12,7 +12,10 @@ import { useDispatch } from "react-redux";
 import ErrorAuth from "../../error/error-auth/error-auth";
 import { authGetUserAction } from "../../../store/actions/auth-actions";
 import LoadingSpinner from "../../UI/loading-spinner/my-spinner";
-import { fetchSettlersAction } from "../../../store/actions/settlers-actions";
+import {
+  dumpSettlersAction,
+  fetchSettlersAction,
+} from "../../../store/actions/settlers-actions";
 
 const SettlersPage = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -31,6 +34,9 @@ const SettlersPage = () => {
     if (!settlersReducer.getSettlers && Auth.user.isAuth) {
       dispatch(fetchSettlersAction(Number.parseInt(id)));
     }
+    return () => {
+      dispatch(dumpSettlersAction());
+    };
   }, [Auth.user.isAuth]);
 
   if (typeof Auth.user.isAuth === "undefined") {

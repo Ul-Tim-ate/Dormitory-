@@ -15,3 +15,7 @@ export const deleteStudentAction = (student: IStudent) => {
 export const addStudentAction = (student: IStudent) => {
   return { type: StudentsActionsTypes.ADD_STUDENT, payload: student };
 };
+
+export const dumpStudentAction = () => {
+  return { type: StudentsActionsTypes.DUMP_STUDENT };
+};

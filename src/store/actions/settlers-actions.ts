@@ -20,6 +20,10 @@ export const deleteSettlersAction = (settlerId: number) => {
   return { type: SettlerActionsTypes.DELETE_SETTLER, payload: settlerId };
 };
 
+export const dumpSettlersAction = () => {
+  return { type: SettlerActionsTypes.DUMP_SETTLER };
+};
+
 export const settleSettlerAction = (
   dormitoryId: number,
   settlerId: number,
