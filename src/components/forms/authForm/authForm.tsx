@@ -21,7 +21,7 @@ const AuthForm = () => {
     isEmpty: true,
     minLength: 8,
     email: false,
-    maxLength: 15,
+    maxLength: 30,
   });
   const isDisabledForm = Boolean(email.error) || Boolean(password.error);
 

@@ -13,19 +13,19 @@ const RegistForm = () => {
     isEmpty: true,
     minLength: 4,
     email: true,
-    maxLength: 20,
+    maxLength: 30,
   });
   const password = useInput("", {
     isEmpty: true,
     minLength: 8,
     email: false,
-    maxLength: 15,
+    maxLength: 30,
   });
   const retypePassword = useInput("", {
     isEmpty: true,
     minLength: 8,
     email: false,
-    maxLength: 15,
+    maxLength: 30,
   });
   const phone = useInput("", {
     isEmpty: true,
@@ -37,7 +37,7 @@ const RegistForm = () => {
     isEmpty: true,
     minLength: 0,
     email: false,
-    maxLength: 15,
+    maxLength: 40,
   });
 
   const retypePass =
