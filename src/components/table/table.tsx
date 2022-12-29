@@ -12,8 +12,6 @@ interface TableProps {
 }
 
 const Table: FC<TableProps> = ({ rows, headers, path }) => {
-  console.log(rows);
-
   return (
     <table className="dorm-table" cellSpacing={0}>
       <tbody>

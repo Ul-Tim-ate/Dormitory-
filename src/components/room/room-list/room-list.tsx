@@ -10,6 +10,7 @@ import { getDormitriesRoomsAction } from "../../../store/actions/rooms-actions";
 import { useParams } from "react-router-dom";
 import { IRoom } from "../../../models/room";
 import { IStudent } from "../../../models/student";
+import RoomArrows from "../room-arrows/room-arrows";
 
 interface RoomListProps {
   resellte?: boolean;
@@ -45,32 +46,7 @@ const RoomList: FC<RoomListProps> = ({ resellte = false }) => {
   return (
     <>
       <ul className="room-list">{displayRooms}</ul>
-      <div className="room-list__arrows">
-        {page > 1 ? (
-          <img
-            src={leftArrow}
-            alt="Предыдущие 6 комнат"
-            className="room-list__arrow"
-            onClick={() => {
-              setPage((page) => {
-                return --page;
-              });
-            }}
-          />
-        ) : (
-          <div className=""></div>
-        )}
-        <img
-          src={rightArrow}
-          alt="Следующие 6 комнат"
-          className="room-list__arrow"
-          onClick={() => {
-            setPage((page) => {
-              return ++page;
-            });
-          }}
-        />
-      </div>
+      <RoomArrows page={page} setPage={setPage} />
     </>
   );
 };
